@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RouteController extends Controller
 {
@@ -15,9 +16,17 @@ class RouteController extends Controller
     {
         return view('welcome');
     }
-    public function index()
+    public function index(Request $request)
     {
-        return view('web.index');
+      if ($request->session()->has('userst'))
+      {
+        return view('web.index', [
+          'name' => cookie('name')
+        ]);
+      }
+      else{
+        return redirect('login');
+      }
 
     }
 
@@ -28,7 +37,8 @@ class RouteController extends Controller
 
     public function signup()
     {
-      return view('web.signup');
+      $companies = DB::table('companies')->get();
+      return view('web.signup', ['companies' => $companies]);
     }
 
     public function forgetpassword()
@@ -96,7 +106,10 @@ class RouteController extends Controller
     }
     public function help()
     {
-      return view('web.help');
+
+      $results = DB::table('faqs')->get();
+
+      return view('web.help', [ 'results' => $results]);
 
     }
     public function changepass()

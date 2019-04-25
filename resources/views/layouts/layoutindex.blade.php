@@ -154,7 +154,7 @@
                       <li><a href="{{url('loyalty')}}">Loyalty Programme</a></li>
                        <li><a href="{{url('help')}}"> FAQs</a></li>
                       <li><a href="{{url('contact')}}" >Contact</a></li>
-                      <li class="has-children"><a href="#"><i class="fa fa-user"></i> Welcome, Mr. Ali &nbsp;&nbsp;</a>
+                      <li class="has-children"><a href="#"><i class="fa fa-user"></i> Welcome, {{ session('name') }} &nbsp;&nbsp;</a>
                         <ul class="dropdown arrow-top">
                           <li><a href="{{url('index')}}"><i class="fa fa-home"></i> Dashboard</a></li>
                           <li><a href="{{url('editProfile')}}"><i class="fa fa-user"></i> Edit Profile</a></li>
@@ -163,7 +163,7 @@
 <!--                       <li><a href="{{url('buyCredits')}}"><i class="fa fa-fw fa-credit-card"></i> Buy credits</a></li> -->
                           <li><a href="{{url('loyaltyPoints')}}"><i class="fa fa-hand-point-up"></i> Loyalty Points</a></li>
                           <li><a href="{{url('changepass')}}"><i class="fa fa-exchange-alt"></i> Change Password</a></li>
-                          <li><a href="{{url('login')}}"><i class="fa fa-sign-out-alt"></i> Sign Out</a></li>
+                          <li><a href="{{url('signout')}}"><i class="fa fa-sign-out-alt"></i> Sign Out</a></li>
                         </ul>
                       </li>
                     </ul>

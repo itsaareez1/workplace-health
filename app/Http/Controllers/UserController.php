@@ -23,6 +23,8 @@ class UserController extends Controller
 
         ]);
 
+        
+
         DB::table('users')->insert([
             'name' => $request->fullname,
             'email' => $request->email,
@@ -33,9 +35,72 @@ class UserController extends Controller
             'terms' => $request->terms  
         ]);
 
-        return response()->json([
-            'status' => "Account created successfully."
-        ]);
+        return redirect('login')->with('status', 'Account created successfully. Login Now!');
 
     }
+
+    public function login(Request $request){
+
+    
+
+        $request->validate([
+            'username' => 'required|max:191',
+            'password' => 'required|min:6'
+        ]);
+
+        $results = DB::table('users')
+        ->where('email', $request->username)
+        ->where('password', md5($request->password))->first();
+
+
+        if ($results != null){
+            session(['userst' => 'logged', 'name' => $results->name]);
+
+            if (isset($request->remember)){
+                if ($request->remember == "remember"){
+                    return view('web.index',compact([
+                        'name' => $results->name,
+                        'status' => "Logged in successfully."
+                    ]))->withCookie(cookie('login_status','logged', 60), cookie('name',$request->name, 525600));
+                }
+            }
+            else {
+                return view('web.index',compact([
+                    'name' => $results->name,
+                    'status' => "Logged in successfully."
+                ]))->withCookie(cookie('login_status','not_logged', 60), cookie('name',$request->name, 525600));
+        }    
+        
+        }
+        else{
+            return redirect('login')->with('status','Login failed! Username or password is wrong.');   
+        }
+    }
+
+    public function signout(Request $request){
+        $request->session()->flush();
+
+        return redirect('/');
+    }
+
+    public function contactus(Request $request){
+        $request->validate([
+            'fullname' => 'required|max:100',
+            'email' => 'required|max:50',
+            'phone' => 'required|max:20',
+            'message' => 'required|max:500'
+        ]);
+
+        DB::table('contactus')->insert([
+            'name' => $request->fullname,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'message' => $request->message
+        ]);
+
+        return redirect('contact')->with('status', 'Form submitted successfully. We will get back to you as soon as possible.');
+
+        
+    }
 }
+ 

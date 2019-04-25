@@ -41,5 +41,8 @@ Route::get('paymentMethod', 'RouteController@paymentMethod');
 Route::get('editProfile', 'RouteController@editProfile');
 Route::get('forgetpassword', 'RouteController@forgetpassword');
 Route::get('gift-store', 'RouteController@gifts');
+Route::get('signout', 'UserController@signout');
 
 Route::post('register', 'UserController@signup');
+Route::post('signin', 'UserController@login');
+Route::post('sendmessage', 'UserController@contactus');
