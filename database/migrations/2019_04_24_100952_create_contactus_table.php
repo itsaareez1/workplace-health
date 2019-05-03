@@ -19,7 +19,7 @@ class CreateContactusTable extends Migration
             $table->string('email', 50);
             $table->string('phone', 20);
             $table->string('message', 500);
-
+            $table->integer('state');
             $table->timestamps();
         });
     }

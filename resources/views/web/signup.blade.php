@@ -60,7 +60,7 @@
 						<div class="container-login100-form-btn" legal>
 								
 								<input type="checkbox" name="terms" id="agree-term" class="agree-term" value="1" />
-								<label  style="font-size: 12px;  font-weight: 600; color: #555;">&nbsp; I agree all statements in <a style="color: blue;" href="https://drive.google.com/open?id=1D9gef-oIJyZlXKTh3kzANZbRch_nEem6 fT_8tYpHwagTOzrj9CB-0IrbOy18" class="term-service">Terms of service</a>.</label>
+								<label  style="font-size: 12px;  font-weight: 600; color: #555;">&nbsp; I agree all statements in <a style="color: blue;" href="{{ url('terms-of-service') }}" class="term-service">Terms of service</a>.</label>
 								<span class="focus-input100" style="color: red">{{ $errors->first('terms') }}</span>
 
 						</div>

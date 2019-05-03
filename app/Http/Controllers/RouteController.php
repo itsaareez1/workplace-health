@@ -14,6 +14,14 @@ class RouteController extends Controller
     }
     public function welcome()
     {
+
+      $programs = DB::table('classes')
+                    ->select('classes.*')
+                    ->orderBy(DB::raw('RAND()'))
+                    ->take(15)
+                    ->get();
+
+
         return view('welcome');
     }
     public function index(Request $request)
@@ -93,6 +101,9 @@ class RouteController extends Controller
       return view('web.gifts');
 
     }
+    public function terms(){
+      return view('web.terms');
+    }
 
     public function myOrder()
     {
@@ -129,7 +140,9 @@ class RouteController extends Controller
     }
     public function editProfile()
     {
-      return view('web.editProfile');
+      $user = DB::table('users')->where('id', '=', session('usr_id'))->first();
+
+      return view('web.editProfile', ['user' => $user]);
 
     }
     public function resetpassword()
@@ -151,6 +164,76 @@ class RouteController extends Controller
     public function paymentMethod()
     {
       return view('web.paymentMethod');
+    }
+
+    public function adminLogin(){
+      return view('web.admin.login');
+    }
+
+    public function adminDashboard(){
+      return view('web.admin.dashboard');
+    }
+    public function addCompany(){
+      $results = DB::table('districts')->get();
+      
+      return view('web.admin.addCompany', ['results' => $results]);
+    }
+    public function addDistrict(){
+      return view('web.admin.addDistrict');
+    }
+    public function addCategory(){
+      return view('web.admin.addCategory');
+    }
+    public function addcoupon(){
+      return view('web.admin.addcoupon');
+    }
+    public function addVoucher(){
+      return view('web.admin.addVoucher');
+    }
+    public function addProduct(){
+      return view('web.admin.addProduct');
+    }
+    public function addClass(){
+      $results = DB::table('categories')->get();
+      return view('web.admin.addClass',['results' => $results]);
+    }
+    public function manageCompany(){
+      $results = DB::table('companies')
+                    ->join('districts','companies.district_id','=','districts.id')
+                    ->select('companies.*', 'districts.name as district')->paginate(10);
+      return view('web.admin.manageCompany', ['results' => $results]);
+    }
+    public function manageCategory(){
+      $results = DB::table('categories')->paginate(10);
+      return view('web.admin.manageCategories', ['results' => $results]);
+    }
+    public function manageClass(){
+      $results = DB::table('classes')->paginate(10);
+
+      return view('web.admin.manageClasses', ['results' => $results]);
+    }
+    public function manageProduct(){
+      $results = DB::table('products')->paginate(10);
+
+      return view('web.admin.manageProducts', ['results' => $results]);
+    }
+    public function manageNews(){
+      $results = DB::table('news')->paginate(10);
+      return view('web.admin.manageNews', ['results' => $results]);
+    }
+    public function manageDistricts(){
+      $results = DB::table('districts')->paginate(10);
+      return view('web.admin.manageDistricts', ['results' => $results]);
+    }
+    public function manageCoupons(){
+      $results = DB::table('coupons')->paginate(10);
+
+      return view('web.admin.manageCoupons', ['results' => $results]);
+    }
+    public function manageVouchers(){
+      $results = DB::table('vouchers')->paginate(10);
+
+      return view('web.admin.manageVouchers', ['results' => $results]);
     }
 
 

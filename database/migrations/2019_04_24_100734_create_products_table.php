@@ -21,6 +21,7 @@ class CreateProductsTable extends Migration
             $table->string('price', 5)->nullable();
             $table->string('specification', 1500);
             $table->string('type', 50);
+            $table->integer('state');
             $table->string('points', 3)->nullable();
             $table->integer('admin_id')->nullable();
             $table->foreign('admin_id')->references('id')->on('admins');

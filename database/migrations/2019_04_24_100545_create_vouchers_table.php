@@ -18,6 +18,7 @@ class CreateVouchersTable extends Migration
             $table->string('title', 50);
             $table->string('description', 500);
             $table->string('code', 10);
+            $table->integer('state');
             $table->integer('admin_id');
             $table->foreign('admin_id')->references('id')->on('admins');
             $table->timestamps();

@@ -94,7 +94,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <h2 class="site-section-heading text-center">Popular Program</h2>
+        <h2 class="site-section-heading text-center">Popular Classes</h2>
       </div>
     </div>
     <div class="row">

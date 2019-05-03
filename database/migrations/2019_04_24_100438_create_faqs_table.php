@@ -17,6 +17,7 @@ class CreateFaqsTable extends Migration
             $table->increments('id');
             $table->string('questions', 300);
             $table->string('answer',1000);
+            $table->integer('state');
             $table->integer('admin_id');
             $table->foreign('admin_id')->references('id')->on('admins');
             $table->timestamps();

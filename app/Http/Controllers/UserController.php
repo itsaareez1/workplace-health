@@ -19,7 +19,7 @@ class UserController extends Controller
             'permit' => 'required|max:30',
             'password' => 'required|min:6|required_with:password_confirmation|same:password_confirmation',
             'password_confirmation' => 'min:6',
-            'terms' => 'required'
+            'terms' => 'accepted'
 
         ]);
 
@@ -54,7 +54,7 @@ class UserController extends Controller
 
 
         if ($results != null){
-            session(['userst' => 'logged', 'name' => $results->name]);
+            session(['userst' => 'logged', 'name' => $results->name, 'usr_id' => $results->id]);
 
             if (isset($request->remember)){
                 if ($request->remember == "remember"){
@@ -101,6 +101,58 @@ class UserController extends Controller
         return redirect('contact')->with('status', 'Form submitted successfully. We will get back to you as soon as possible.');
 
         
+    }
+    public function editProfile(Request $request){
+       if ($request->session()->has('usr_id')){
+
+            $id = $request->session()->get('usr_id');
+
+            $request->validate([
+                
+                'name' => 'max:100',
+                'phone' => 'max:13',
+                'email' => 'max:191'
+            ]);
+
+            if (isset($request->gender)){
+
+                
+                $gender = $request->get('gender');
+                DB::table('users')->where('id','=', $id)->update([
+                    'salutation' => $gender
+                ]);
+                
+            }
+            if (isset($request->name)){
+
+                DB::table('users')->where('id','=', $id)->update([
+                    'name' => $request->name
+                ]);
+
+            }
+            if (isset($request->phone)){
+
+                DB::table('users')->where('id','=', $id)->update([
+                    'phone' => $request->phone,
+                    'phonestatus' => 0
+                ]);
+
+            }
+            if (isset($request->email)){
+
+                DB::table('users')->where('id','=', $id)->update([
+                    'email' => $request->email,
+                    'emailstatus' => 0
+                ]);
+
+            }
+
+            return redirect('editProfile')->with('The profile infromation has been updated successfully.');
+
+           }
+           else{
+              return redirect('login');
+        }
     }
 }
  

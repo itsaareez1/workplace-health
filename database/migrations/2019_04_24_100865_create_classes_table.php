@@ -25,6 +25,7 @@ class CreateClassesTable extends Migration
             $table->integer('credits');
             $table->string('level', 10);
             $table->string('status', 50);
+            $table->integer('state');
             $table->integer('category_id');
             $table->foreign('category_id')->references('id')->on('categories');
             $table->integer('admin_id');

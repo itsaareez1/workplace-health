@@ -41,8 +41,44 @@ Route::get('paymentMethod', 'RouteController@paymentMethod');
 Route::get('editProfile', 'RouteController@editProfile');
 Route::get('forgetpassword', 'RouteController@forgetpassword');
 Route::get('gift-store', 'RouteController@gifts');
+Route::get('terms-of-service', 'RouteController@terms');
+
+
+Route::get('wh-admin', 'RouteController@adminLogin');
+Route::get('wh-dashboard', 'RouteController@adminDashboard');
+Route::get('wh-addCompany', 'RouteController@addCompany');
+Route::get('wh-addDistrict', 'RouteController@addDistrict');
+Route::get('wh-addCategory', 'RouteController@addCategory');
+Route::get('wh-coupon', 'RouteController@addcoupon');
+Route::get('wh-voucher', 'RouteController@addVoucher');
+Route::get('wh-product', 'RouteController@addProduct');
+Route::get('wh-class', 'RouteController@addClass');
+Route::get('wh-manageCompany', 'RouteController@manageCompany');
+Route::get('wh-manageCategory', 'RouteController@manageCategory');
+Route::get('wh-manageClass', 'RouteController@manageClass');
+Route::get('wh-manageProduct', 'RouteController@manageProduct');
+Route::get('wh-manageNews', 'RouteController@manageNews');
+Route::get('wh-manageDistricts', 'RouteController@manageDistricts');
+Route::get('wh-manageCoupons', 'RouteController@manageCoupons');
+Route::get('wh-manageVouchers', 'RouteController@manageVouchers');
+
+
 Route::get('signout', 'UserController@signout');
+
 
 Route::post('register', 'UserController@signup');
 Route::post('signin', 'UserController@login');
 Route::post('sendmessage', 'UserController@contactus');
+Route::post('upPro', 'UserController@editProfile');
+Route::post('admin-login', 'AdminController@login');
+Route::post('postDistrict', 'AdminController@addDistricts');
+Route::post('postCompany', 'AdminController@addCompany');
+Route::post('postCategory', 'AdminController@addCategories');
+Route::post('postCoupon', 'AdminController@addcoupon');
+Route::post('postVoucher', 'AdminController@addVouchers');
+Route::post('postProduct', 'AdminController@addProducts');
+Route::post('postClass', 'AdminController@createClass');
+
+
+
+
