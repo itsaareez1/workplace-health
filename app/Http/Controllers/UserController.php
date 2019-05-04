@@ -95,7 +95,8 @@ class UserController extends Controller
             'name' => $request->fullname,
             'email' => $request->email,
             'phone' => $request->phone,
-            'message' => $request->message
+            'message' => $request->message,
+            'state' => 1
         ]);
 
         return redirect('contact')->with('status', 'Form submitted successfully. We will get back to you as soon as possible.');

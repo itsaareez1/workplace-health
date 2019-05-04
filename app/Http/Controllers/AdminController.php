@@ -102,26 +102,38 @@ class AdminController extends Controller
     public function addNews(Request $request){
         if ($request->session()->has('admin_id')){
 
+            $type = "";
+            if ($request->type == 2)
+            {
+                $type = "specific";
+            }
+            else{
+                $type = "general";
+            }
+
+            $image = $request->file('image')->store('news', 'public');
+
             $request->validate([
-                'type' => 'required|max:50',
+                'type' => 'required',
                 'title' => 'required|max:100',
-                'img' => 'required|max:200',
+                'image' => 'required',
+                'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10008',
                 'description' => 'required|max:1500',
             ]);
 
             DB::table('news')->insert([
-                'type' => $request->type,
+                'type' => $type,
                 'title' => $request->title,
-                'img' => $request->img,
+                'img' => $image,
                 'description' => $request->description,
                 'admin_id' => session('admin_id')
             ]);
 
-            return redirect('admin/news')->with('status', 'News added successfully.');
+            return redirect('wh-addNews')->with('status', 'News added successfully.');
         }
         else{
 
-            return redirect('admin-login');
+            return redirect('wh-admin');
         }
 
 
@@ -202,33 +214,35 @@ class AdminController extends Controller
                 'time' => 'required|max:8',
                 'duration' => 'required|max:10',
                 'venue' => 'required|max:50',
-                'slots' => 'required|max:10',
                 'description' => 'required|max:1500',
                 'credits' => 'required|max:11',
                 'level' => 'required|max:10',
+                'slot' => 'required',
                 'state' => 'required|max:50',
                 'category_id' => 'required',
+                'program_id' => 'required'
             ]);
 
             $image = $request->file('image')->store('classes', 'public');
 
 
-            DB::table('classes')->insert([
+        DB::table('classes')->insert([
                 'name' => $request->name,
                 'img' => $image,
                 'time' => $request->time,
                 'duration' => $request->duration,
                 'venue' => $request->venue,
-                'slots' => $request->slots,
                 'description' => $request->description,
                 'credits' => $request->credits,
                 'level' => $request->level,
                 'state' => $request->state,
+                'slot' => $request->slot,
                 'status' => " ",                
                 'category_id' => $request->category_id,
-                'admin_id' => session('admin_id') 
+                'program_id' => $request->program_id
             ]);
     
+
             return redirect('wh-class')->with('status','Class created successfully.');
     
         }
@@ -273,6 +287,51 @@ class AdminController extends Controller
             ]);
     
             return redirect('wh-addCompany')->with('status','Company created successfully.');
+    
+        }
+        else{
+
+            return redirect('wh-admin');
+        }
+
+    }
+    public function postFAQ(Request $request){
+        if ($request->session()->has('admin_id')){
+
+            $request->validate([
+                'question' => 'required|max:300',
+                'answer' => 'required|max:1000',
+            ]);
+
+            DB::table('faqs')->insert([
+                'questions' => $request->question,
+                'answer' => $request->answer,
+                'state' => 1,
+                'admin_id' => session('admin_id')
+            ]);
+    
+            return redirect('wh-faqs')->with('status','FAQ added successfully.');
+    
+        }
+        else{
+
+            return redirect('wh-admin');
+        }
+
+    }
+    public function postProgram(Request $request){
+        if ($request->session()->has('admin_id')){
+
+            $request->validate([
+                'name' => 'required|max:200',
+            ]);
+
+            DB::table('programs')->insert([
+                'name' => $request->name,
+                'admin_id' => session('admin_id')
+            ]);
+    
+            return redirect('wh-addProgram')->with('status','Program created successfully.');
     
         }
         else{

@@ -46,6 +46,21 @@
                 <span style="color: red">{{ $errors->first('name') }}</span>
                 <br/><br/>
                 @endif
+                <div class="form-group">
+                  <label for="program_id">Select Category</label>
+                  <div class="input-group input-group-icon iconfont icon-right">
+                    <select id="program_id" name="program_id">
+                        <option disabled selected>Select Programme!</option>
+                        @foreach ($programs as $program)
+                        <option value="{{ $program->id }}">{{ $program->name }}</option>
+                        @endforeach
+                    </select>
+                  </div>
+                </div>
+                @if ($errors->first('program_id'))
+                <span style="color: red">{{ $errors->first('program_id') }}</span>
+                <br/><br/>
+                @endif
 
                 <div class="form-group">
                   <label for="image">Upload Display Image</label>
@@ -89,13 +104,14 @@
                 @endif
 
                 <div class="form-group">
-                  <label for="slots">Class Slots</label>
+                  <label for="slot">Class Slots</label>
                   <div class="input-group input-group-icon iconfont icon-right">
-                    <input class="form-control" name="slots" type="text" placeholder="Write slots for class here!">
+                      <input class="form-control" name="slot" type="text" placeholder="Use comma (,) seprated values.">
+
                   </div>
                 </div>
-                @if ($errors->first('slots'))
-                <span style="color: red">{{ $errors->first('slots') }}</span>
+                @if ($errors->first('slot'))
+                <span style="color: red">{{ $errors->first('slot') }}</span>
                 <br/><br/>
                 @endif
 
@@ -140,8 +156,8 @@
                     </select>
                   </div>
                 </div>
-                @if ($errors->first('state'))
-                <span style="color: red">{{ $errors->first('state') }}</span>
+                @if ($errors->first('category_id'))
+                <span style="color: red">{{ $errors->first('category_id') }}</span>
                 <br/><br/>
                 @endif
 

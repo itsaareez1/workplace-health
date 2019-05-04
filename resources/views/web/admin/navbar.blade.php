@@ -312,7 +312,7 @@
             <div class="dropdown-info__name">{{ session()->get('name') }}</div>
             <div class="dropdown-info__job">Administrator</div>
           </div>
-        </div><a class="dropdown-item navbar-dropdown__item" href="#">Sign Out</a>
+        </div><a class="dropdown-item navbar-dropdown__item" href="{{ url('signout') }}">Sign Out</a>
       </div>
     </div>
   </div>

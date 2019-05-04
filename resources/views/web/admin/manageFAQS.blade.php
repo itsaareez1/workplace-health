@@ -12,19 +12,19 @@
 <div class="container-fluid container-fh">
   <div class="page-content__header">
     <div>
-      <h2 class="page-content__header-heading">Manage Classes</h2>
+      <h2 class="page-content__header-heading">Manage FAQs</h2>
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
           <a href="{{ url('wh-dashboard') }}">Home</a>
         </li>
-        <li class="breadcrumb-item active">Manage  Classes</li>
+        <li class="breadcrumb-item active">Manage FAQs</li>
       </ol>
     </div>
   </div>
   <div class="container-fh__content dataset">
     <div class="dataset__header">
       <div class="dataset__header-side">
-        <div class="dataset__header-heading"> Classes</div>
+        <div class="dataset__header-heading">Frequently Asked Questions</div>
  
       </div>
     </div>
@@ -33,61 +33,24 @@
         <thead>
         <tr>
           <th>ID</th>
-          <th>Name</th>
-          <th>Time</th>
-          <th>Duration</th>
-          <th>Venue</th>
-          <th>Credits</th>
-          <th>Level</th>
-          <th>Slot</th>
+          <th>Question</th>
           <th>Status</th>
           <th>&nbsp;</th>
         </tr>
         </thead>
         <tbody>
-        @foreach ($results as $class)
+        @foreach ($results as $faq)
         <tr>
           <td class="table__checkbox">
           <div class="table__cell-widget">
-              <a href="#" class="table__cell-widget-name">{{ $class->id }}</a>
+              <a href="#" class="table__cell-widget-name">{{ $faq->id }}</a>
             </div>
           </td>
           <td>
             <div class="table__cell-widget">
-              <a href="#" class="table__cell-widget-name">{{ $class->name }}</a>
+              <a href="#" class="table__cell-widget-name">{{ $faq->name }}</a>
             </div>
           </td>
-          <td>
-            <div class="table__cell-widget">
-              <span class="table__cell-widget-name">{{ $class->time }}</span>
-            </div>
-          </td>
-          <td>
-            <div class="table__cell-widget">
-              <span class="table__cell-widget-name">{{ $class->duration }}</span>
-            </div>
-          </td>
-          <td>
-            <div class="table__cell-widget">
-              <span class="table__cell-widget-name">{{ $class->venue }}</span>
-            </div>
-          </td>
-          <td>
-            <div class="table__cell-widget">
-              <span class="table__cell-widget-name">{{ $class->credits }}</span>
-            </div>
-          </td>
-          <td>
-            <div class="table__cell-widget">
-              <span class="table__cell-widget-name">{{ $class->level }}</span>
-            </div>
-          </td>
-          <td>
-            <div class="table__cell-widget">
-              <span class="table__cell-widget-name">{{ $class->slot }}</span>
-            </div>
-          </td>
-
           <td class="table__label"><span class="badge badge-success">Label</span></td>
           <td class="table__cell-actions">
             <div class="table__cell-actions-wrap">

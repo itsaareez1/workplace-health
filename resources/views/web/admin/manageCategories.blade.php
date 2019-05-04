@@ -12,19 +12,19 @@
 <div class="container-fluid container-fh">
   <div class="page-content__header">
     <div>
-      <h2 class="page-content__header-heading">Manage Companies</h2>
+      <h2 class="page-content__header-heading">Manage Categories</h2>
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
           <a href="{{ url('wh-dashboard') }}">Home</a>
         </li>
-        <li class="breadcrumb-item active">Manage Companies</li>
+        <li class="breadcrumb-item active">Manage Categories</li>
       </ol>
     </div>
   </div>
   <div class="container-fh__content dataset">
     <div class="dataset__header">
       <div class="dataset__header-side">
-        <div class="dataset__header-heading">Companies</div>
+        <div class="dataset__header-heading">Categories</div>
  
       </div>
     </div>

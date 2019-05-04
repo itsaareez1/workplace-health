@@ -12,19 +12,19 @@
 <div class="container-fluid container-fh">
   <div class="page-content__header">
     <div>
-      <h2 class="page-content__header-heading">Manage Companies</h2>
+      <h2 class="page-content__header-heading">Manage Coupons</h2>
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
           <a href="{{ url('wh-dashboard') }}">Home</a>
         </li>
-        <li class="breadcrumb-item active">Manage Companies</li>
+        <li class="breadcrumb-item active">Manage Coupons</li>
       </ol>
     </div>
   </div>
   <div class="container-fh__content dataset">
     <div class="dataset__header">
       <div class="dataset__header-side">
-        <div class="dataset__header-heading">Companies</div>
+        <div class="dataset__header-heading">Coupons</div>
  
       </div>
     </div>
@@ -33,43 +33,43 @@
         <thead>
         <tr>
           <th>ID</th>
-          <th>Name</th>
-          <th>District</th>
+          <th>Title</th>
+          <th>Code</th>
           <th>Created At</th>
-          <th>Updated At</th>
+          <th>Valid Till</th>
           <th>Status</th>
           <th>&nbsp;</th>
         </tr>
         </thead>
         <tbody>
-        @foreach ($results as $company)
+        @foreach ($results as $coupon)
         <tr>
           <td class="table__checkbox">
           <div class="table__cell-widget">
-              <a href="#" class="table__cell-widget-name">{{ $company->id }}</a>
+              <a href="#" class="table__cell-widget-name">{{ $coupon->id }}</a>
             </div>
           </td>
           <td>
             <div class="table__cell-widget">
-              <a href="#" class="table__cell-widget-name">{{ $company->name }}</a>
+              <a href="#" class="table__cell-widget-name">{{ $coupon->title }}</a>
             </div>
           </td>
           <td>
             <div class="table__cell-widget">
-              <span class="table__cell-widget-name">{{ $company->district }}</span>
+              <span class="table__cell-widget-name">{{ $coupon->code }}</span>
             </div>
           </td>
           <td>
             <div class="table__cell-user">
               <img src="img/users/user-10.png" alt="" class="table__cell-user-avatar rounded-circle">
               <div class="table__cell-user-wrap">
-                <a href="#" class="table__cell-widget-name">{{ $company->created_at }}</a>
+                <a href="#" class="table__cell-widget-name">{{ $coupon->created_at }}</a>
               </div>
             </div>
           </td>
           <td>
             <div class="table__cell-widget">
-              <span class="table__cell-widget-name">{{ $company->updated_at }}</span>
+              <span class="table__cell-widget-name">{{ $coupon->updated_at }}</span>
             </div>
           </td>
           <td class="table__label"><span class="badge badge-success">Label</span></td>

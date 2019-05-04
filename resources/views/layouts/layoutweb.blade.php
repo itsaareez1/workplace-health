@@ -71,6 +71,28 @@
                   <div class="container">
                     <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3"><a href="#" class="site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
 
+                    @if (session()->has('usr_id'))
+                    <ul class="site-menu js-clone-nav d-none d-lg-block">
+                      <li><a href="{{url('welcome')}}">Home</a></li>
+						          <li><a href="{{url('program')}}">Book a Class</a></li>
+                      <li><a href="{{url('store')}}">Store</a></li>
+                      <li><a href="{{url('loyalty')}}">Loyalty Programme</a></li>
+                       <li><a href="{{url('help')}}"> FAQs</a></li>
+                      <li><a href="{{url('contact')}}" >Contact</a></li>
+                      <li class="has-children"><a href="#"><i class="fa fa-user"></i> Welcome, {{ session('name') }} &nbsp;&nbsp;</a>
+                        <ul class="dropdown arrow-top">
+                          <li><a href="{{url('index')}}"><i class="fa fa-home"></i> Dashboard</a></li>
+                          <li><a href="{{url('editProfile')}}"><i class="fa fa-user"></i> Edit Profile</a></li>
+                          <li><a href="{{url('myOrder')}}"><i class="fa fa-file"></i> My Order</a></li>
+                          <li><a href="{{url('history')}}"><i class="fa fa-history"></i> History</a></li>
+<!--                       <li><a href="{{url('buyCredits')}}"><i class="fa fa-fw fa-credit-card"></i> Buy credits</a></li> -->
+                          <li><a href="{{url('loyaltyPoints')}}"><i class="fa fa-hand-point-up"></i> Loyalty Points</a></li>
+                          <li><a href="{{url('changepass')}}"><i class="fa fa-exchange-alt"></i> Change Password</a></li>
+                          <li><a href="{{url('signout')}}"><i class="fa fa-sign-out-alt"></i> Sign Out</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                    @else
                     <ul class="site-menu js-clone-nav d-none d-lg-block">
 
                     <li><a href="{{url('welcome')}}">Home</a></li>
@@ -83,6 +105,7 @@
 
 
                     </ul>
+                    @endif
                   </div>
                 </nav>
 

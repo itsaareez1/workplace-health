@@ -53,14 +53,19 @@ Route::get('wh-coupon', 'RouteController@addcoupon');
 Route::get('wh-voucher', 'RouteController@addVoucher');
 Route::get('wh-product', 'RouteController@addProduct');
 Route::get('wh-class', 'RouteController@addClass');
+Route::get('wh-faqs', 'RouteController@addFAQ');
+Route::get('wh-addProgram', 'RouteController@addProgram');
+Route::get('wh-addNews', 'RouteController@addNews');
 Route::get('wh-manageCompany', 'RouteController@manageCompany');
 Route::get('wh-manageCategory', 'RouteController@manageCategory');
 Route::get('wh-manageClass', 'RouteController@manageClass');
 Route::get('wh-manageProduct', 'RouteController@manageProduct');
 Route::get('wh-manageNews', 'RouteController@manageNews');
-Route::get('wh-manageDistricts', 'RouteController@manageDistricts');
-Route::get('wh-manageCoupons', 'RouteController@manageCoupons');
+Route::get('wh-manageDistrict', 'RouteController@manageDistricts');
+Route::get('wh-manageCoupon', 'RouteController@manageCoupons');
 Route::get('wh-manageVouchers', 'RouteController@manageVouchers');
+Route::get('wh-managefaqs', 'RouteController@manageFAQs');
+Route::get('wh-managenews', 'RouteController@manageNews');
 
 
 Route::get('signout', 'UserController@signout');
@@ -78,6 +83,9 @@ Route::post('postCoupon', 'AdminController@addcoupon');
 Route::post('postVoucher', 'AdminController@addVouchers');
 Route::post('postProduct', 'AdminController@addProducts');
 Route::post('postClass', 'AdminController@createClass');
+Route::post('postFAQ', 'AdminController@postFAQ');
+Route::post('postProgram', 'AdminController@postProgram');
+Route::post('postNews', 'AdminController@addNews');
 
 
 

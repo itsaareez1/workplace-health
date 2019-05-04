@@ -60,7 +60,11 @@ class RouteController extends Controller
 
     public function program()
     {
-        return view('web.program');
+      $classes = DB::table('programs')
+                  ->join('classes','programs.id','=','classes.program_id')
+                  ->select('programs.name','classes.*')->get();
+
+         return view('web.program',['results' => $results]);
     }
 
     public function store()
@@ -195,7 +199,17 @@ class RouteController extends Controller
     }
     public function addClass(){
       $results = DB::table('categories')->get();
-      return view('web.admin.addClass',['results' => $results]);
+      $programs = DB::table('programs')->get();
+      return view('web.admin.addClass',[
+        'results' => $results,
+        'programs' => $programs
+        ]);
+    }
+    public function addFAQ(){
+      return view('web.admin.addFAQ');
+    }
+    public function addProgram(){
+      return view('web.admin.addProgram');
     }
     public function manageCompany(){
       $results = DB::table('companies')
@@ -235,6 +249,12 @@ class RouteController extends Controller
 
       return view('web.admin.manageVouchers', ['results' => $results]);
     }
+    public function manageFAQs(){
+      $results = DB::table('faqs')->paginate(10);
 
-
+      return view('web.admin.manageFAQS', ['results' => $results]);
+    }
+    public function addNews(){
+      return view('web.admin.addNews');
+    }
 }

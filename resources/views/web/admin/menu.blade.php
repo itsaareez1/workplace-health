@@ -19,6 +19,27 @@
             <span class="sidebar-section-nav__item-icon ua-icon-home"></span>
             <span class="sidebar-section-nav__item-text">Dashboard</span>
           </a>
+          <li class="sidebar-section-nav__item">
+          <a class="sidebar-section-nav__link sidebar-section-nav__link-dropdown" href="#">
+            <span class="sidebar-section-nav__item-icon ua-icon-letter"></span>
+            <span class="sidebar-section-nav__item-text">Messages</span>
+          </a>
+          <ul class="sidebar-section-subnav">
+            <li class="sidebar-section-subnav__item"><a class="sidebar-section-subnav__link" href="{{ url('wh-voucher')}}">Inbox</a></li>
+            <li class="sidebar-section-subnav__item"><a class="sidebar-section-subnav__link" href="{{ url('wh-manageVoucher') }}">Sent</a></li>
+          </ul>
+          </li>
+          <li class="sidebar-section-nav__item">
+          <a class="sidebar-section-nav__link sidebar-section-nav__link-dropdown" href="#">
+            <span class="sidebar-section-nav__item-icon ua-icon-home"></span>
+            <span class="sidebar-section-nav__item-text">News</span>
+          </a>
+          <ul class="sidebar-section-subnav">
+            <li class="sidebar-section-subnav__item"><a class="sidebar-section-subnav__link" href="{{ url('wh-addNews') }}">Add News</a></li>
+            <li class="sidebar-section-subnav__item"><a class="sidebar-section-subnav__link" href="{{ url('wh-manageNews') }}">Manage</a></li>
+          </ul>
+          </li>
+
         <li class="sidebar-section-nav__item">
           <a class="sidebar-section-nav__link sidebar-section-nav__link-dropdown" href="#">
             <span class="sidebar-section-nav__item-icon ua-icon-home"></span>
@@ -28,6 +49,9 @@
             <li class="sidebar-section-subnav__item"><a class="sidebar-section-subnav__link" href="{{ url('wh-addCompany') }}">Add New</a></li>
             <li class="sidebar-section-subnav__item"><a class="sidebar-section-subnav__link" href="{{ url('wh-manageCompany') }}">Manage</a></li>
           </ul>
+        </li>
+
+
 
         <li class="sidebar-section-nav__item">
           <a class="sidebar-section-nav__link sidebar-section-nav__link-dropdown" href="#">
@@ -38,17 +62,18 @@
             <li class="sidebar-section-subnav__item"><a class="sidebar-section-subnav__link" href="{{ url('wh-addCategory') }}">Add New</a></li>
             <li class="sidebar-section-subnav__item"><a class="sidebar-section-subnav__link" href="{{ url('wh-manageCategory') }}">Manage</a></li>
           </ul>
-
+          </li>
         <li class="sidebar-section-nav__item">
           <a class="sidebar-section-nav__link sidebar-section-nav__link-dropdown" href="#">
             <span class="sidebar-section-nav__item-icon ua-icon-home"></span>
-            <span class="sidebar-section-nav__item-text">Classes</span>
+            <span class="sidebar-section-nav__item-text">Programmes</span>
           </a>
           <ul class="sidebar-section-subnav">
-            <li class="sidebar-section-subnav__item"><a class="sidebar-section-subnav__link" href="{{ url('wh-class') }}">Add New</a></li>
+            <li class="sidebar-section-subnav__item"><a class="sidebar-section-subnav__link" href="{{ url('wh-addProgram') }}">Add Programme</a></li>
+            <li class="sidebar-section-subnav__item"><a class="sidebar-section-subnav__link" href="{{ url('wh-class') }}">Add Class</a></li>
             <li class="sidebar-section-subnav__item"><a class="sidebar-section-subnav__link" href="{{ url('wh-manageClass') }}">Manage</a></li>
           </ul>
-
+          </li>
         <li class="sidebar-section-nav__item">
           <a class="sidebar-section-nav__link sidebar-section-nav__link-dropdown" href="#">
             <span class="sidebar-section-nav__item-icon ua-icon-home"></span>
@@ -58,7 +83,7 @@
             <li class="sidebar-section-subnav__item"><a class="sidebar-section-subnav__link" href="{{ url('wh-product') }}">Add New</a></li>
             <li class="sidebar-section-subnav__item"><a class="sidebar-section-subnav__link" href="{{ url('wh-manageProduct') }}">Manage</a></li>
           </ul>
-
+          </li>
         <li class="sidebar-section-nav__item">
           <a class="sidebar-section-nav__link sidebar-section-nav__link-dropdown" href="#">
             <span class="sidebar-section-nav__item-icon ua-icon-home"></span>
@@ -68,7 +93,7 @@
             <li class="sidebar-section-subnav__item"><a class="sidebar-section-subnav__link" href="index.html">Add New</a></li>
             <li class="sidebar-section-subnav__item"><a class="sidebar-section-subnav__link" href="{{ url('wh-manageNews') }}">Manage</a></li>
           </ul>
-
+          </li>
         <li class="sidebar-section-nav__item">
           <a class="sidebar-section-nav__link sidebar-section-nav__link-dropdown" href="#">
             <span class="sidebar-section-nav__item-icon ua-icon-home"></span>
@@ -78,7 +103,7 @@
             <li class="sidebar-section-subnav__item"><a class="sidebar-section-subnav__link" href="{{ url('wh-addDistrict') }}">Add New</a></li>
             <li class="sidebar-section-subnav__item"><a class="sidebar-section-subnav__link" href="{{ url('wh-manageDistrict') }}">Manage</a></li>
           </ul>
-
+          </li>
         <li class="sidebar-section-nav__item">
           <a class="sidebar-section-nav__link sidebar-section-nav__link-dropdown" href="#">
             <span class="sidebar-section-nav__item-icon ua-icon-home"></span>
@@ -95,9 +120,19 @@
           </a>
           <ul class="sidebar-section-subnav">
             <li class="sidebar-section-subnav__item"><a class="sidebar-section-subnav__link" href="{{ url('wh-voucher')}}">Create New</a></li>
-            <li class="sidebar-section-subnav__item"><a class="sidebar-section-subnav__link" href="{{ url('wh-manageVoucher') }}">Manage</a></li>
+            <li class="sidebar-section-subnav__item"><a class="sidebar-section-subnav__link" href="{{ url('wh-manageVouchers') }}">Manage</a></li>
           </ul>
-
+          </li>
+          <li class="sidebar-section-nav__item">
+          <a class="sidebar-section-nav__link sidebar-section-nav__link-dropdown" href="#">
+            <span class="sidebar-section-nav__item-icon ua-icon-home"></span>
+            <span class="sidebar-section-nav__item-text">FAQs</span>
+          </a>
+          <ul class="sidebar-section-subnav">
+            <li class="sidebar-section-subnav__item"><a class="sidebar-section-subnav__link" href="{{ url('wh-faqs')}}">Create New</a></li>
+            <li class="sidebar-section-subnav__item"><a class="sidebar-section-subnav__link" href="{{ url('wh-managefaqs') }}">Manage</a></li>
+          </ul>
+          </li>
         </div>
 
 

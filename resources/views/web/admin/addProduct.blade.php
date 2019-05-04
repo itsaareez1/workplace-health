@@ -87,8 +87,8 @@
                     <textarea class="form-control" name="specs" type="text" placeholder="Write specifications for product here!"></textarea>
                   </div>
                 </div>
-                @if ($errors->first('description'))
-                <span style="color: red">{{ $errors->first('description') }}</span>
+                @if ($errors->first('specs'))
+                <span style="color: red">{{ $errors->first('specs') }}</span>
                 <br/><br/>
                 @endif
 

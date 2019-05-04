@@ -17,19 +17,19 @@ class CreateClassesTable extends Migration
             $table->increments('id');
             $table->string('name', 100);
             $table->string('img', 100);
-            $table->string('time', 8);
+            $table->string('time', 20);
             $table->string('duration', 10);
             $table->string('venue', 50);
-            $table->string('slots', 10);
             $table->string('description', 1500);
             $table->integer('credits');
-            $table->string('level', 10);
+            $table->string('level', 20);
+            $table->string('slot', 15);
             $table->string('status', 50);
             $table->integer('state');
             $table->integer('category_id');
             $table->foreign('category_id')->references('id')->on('categories');
-            $table->integer('admin_id');
-            $table->foreign('admin_id')->references('id')->on('admins');
+            $table->integer('program_id');
+            $table->foreign('program_id')->references('id')->on('programs');
             $table->timestamps();
         });
     }
