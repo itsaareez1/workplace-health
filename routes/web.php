@@ -23,7 +23,7 @@ Route::get('contact', 'RouteController@contact');
 Route::get('store', 'RouteController@store');
 Route::get('singleprogram', 'RouteController@singleprogram');
 Route::get('singleclass', 'RouteController@singleclass');
-Route::get('viewItem', 'RouteController@viewItem');
+Route::get('viewItem/{id}', 'RouteController@viewItem');
 Route::get('viewGift', 'RouteController@viewGift');
 Route::get('loyalty', 'RouteController@loyalty');
 Route::get('loyaltyPoints', 'RouteController@loyaltyPoints');
@@ -87,6 +87,7 @@ Route::post('postFAQ', 'AdminController@postFAQ');
 Route::post('postProgram', 'AdminController@postProgram');
 Route::post('postNews', 'AdminController@addNews');
 
+Route::post('changepass', 'UserController@changePass');
 
 
 

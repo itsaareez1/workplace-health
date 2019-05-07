@@ -10,7 +10,6 @@
     </div>
     <div class="row">
 
-    @foreach ($results as $result)
       <div class="col-md-4 text-center mb-4">
         <div class="border p-4 text-with-icon">
           <span class="flaticon-weightlifting icon display-4 mb-4 d-block text-primary"></span>
@@ -58,7 +57,6 @@
           </table>
         </div>
       </div>
-    @endforeach
     </div>
   </div>
 </div>

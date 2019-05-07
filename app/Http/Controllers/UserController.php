@@ -53,7 +53,7 @@ class UserController extends Controller
         ->where('password', md5($request->password))->first();
 
 
-        if ($results != null){
+        if (!empty($results)){
             session(['userst' => 'logged', 'name' => $results->name, 'usr_id' => $results->id]);
 
             if (isset($request->remember)){
@@ -153,6 +153,38 @@ class UserController extends Controller
            }
            else{
               return redirect('login');
+        }
+    }
+
+    public function changePass(Request $request){
+
+        if ($request->session()->has('usr_id')){
+
+            $request->validate([
+                'opass' => 'required|min:6',
+                'npass' => 'required|min:6|required_with:cpass|same:cpass',
+                'cpass' => 'min:6'
+            ]);
+    
+            $result = DB::table('users')
+            ->where('id' ,'=', $request->session()->get('usr_id'))
+            ->where('password', '=', md5($request->opass))->first();
+
+            if (!empty($result)){
+
+                DB::table('users')->where('id', '=', $request->session()->get('usr_id'))->update([
+                    'password' => md5($request->npass)
+                ]);
+                return redirect('changepass')->with('status',"Password changed successfully");
+
+            }
+            else{
+                return redirect('changepass')->with('wrong', 'Old password is wrong.');
+            }
+    
+        }
+        else {
+            return redirect('login');
         }
     }
 }

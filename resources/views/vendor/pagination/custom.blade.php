@@ -2,9 +2,9 @@
     <ul class="pager pagination dataset__pagination">
         {{-- Previous Page Link --}}
         @if ($paginator->onFirstPage())
-            <li class="disabled page-item dataset__pagination-item"><span>← Previous</span></li>
+            <li class="disabled page-item dataset__pagination-item"><span>Prev.</span></li>
         @else
-            <li><a href="{{ $paginator->previousPageUrl() }}" rel="prev">← Previous</a></li>
+            <li><a href="{{ $paginator->previousPageUrl() }}" rel="prev">Prev.</a></li>
         @endif
 
 
@@ -31,9 +31,9 @@
 
         {{-- Next Page Link --}}
         @if ($paginator->hasMorePages())
-            <li class="page-item dataset__pagination-item"><a href="{{ $paginator->nextPageUrl() }}" rel="next">Next →</a></li>
+            <li class="page-item dataset__pagination-item"><a href="{{ $paginator->nextPageUrl() }}" rel="next">Next</a></li>
         @else
-            <li class="disabled page-item dataset__pagination-item"><span>Next →</span></li>
+            <li class="disabled page-item dataset__pagination-item"><span>Next</span></li>
         @endif
     </ul>
 @endif

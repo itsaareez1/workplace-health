@@ -69,12 +69,15 @@ class RouteController extends Controller
 
     public function store()
     {
-      return view('web.store');
+      $products = DB::table('products')->where('type','=','1')->paginate(9);
+      return view('web.store', ['products' => $products]);
 
     }
     public function contact()
     {
-          return view('web.contact');
+
+      $results = DB::table('contactinfo')->first();
+          return view('web.contact', ['result' => $results]);
     }
     public function singleprogram()
     {
@@ -86,9 +89,12 @@ class RouteController extends Controller
       return view('web.singleclass');
     }
 
-    public function viewItem()
+    public function viewItem(Request $request)
     {
-      return view('web.viewItem');
+      $product = DB::table('products')
+                 ->where('id','=',$request->id)->first();
+
+      return view('web.viewItem', ['product' => $product]);
 
     }
     public function viewGift()
