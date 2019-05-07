@@ -15,14 +15,27 @@ class RouteController extends Controller
     public function welcome()
     {
 
-      $programs = DB::table('classes')
+      $classes = DB::table('classes')
                     ->select('classes.*')
                     ->orderBy(DB::raw('RAND()'))
-                    ->take(15)
+                    ->take(10)
                     ->get();
 
-
-        return view('welcome');
+      $products = DB::table('products')
+                      ->select('products.*')
+                      ->where('type','=','1')
+                      ->orderBy(DB::raw('RAND()'))
+                      ->take(9)
+                      ->get();
+                     
+     $news = DB::table('news')
+                      ->select('news.*')
+                      ->where('type','=','general')
+                      ->orderBy(DB::raw('RAND()'))
+                      ->take(9)
+                      ->get();
+                 
+        return view('welcome', ['products' => $products, 'classes' => $classes, 'news' => $news]);
     }
     public function index(Request $request)
     {
@@ -79,10 +92,13 @@ class RouteController extends Controller
       $results = DB::table('contactinfo')->first();
           return view('web.contact', ['result' => $results]);
     }
-    public function singleprogram()
-    {
-      return view('web.singleprogram');
+    public function singleprogram(Request $request){
+      $class = DB::table('classes')
+                    ->join('categories','categories.id','=','classes.category_id')
+                    ->select('classes.*','categories.name as category')
+                    ->where('classes.id', '=', $request->id)->first();
 
+      return view('web.singleprogram', ['class' => $class]);
     }
     public function singleclass()
     {

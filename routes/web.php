@@ -21,7 +21,7 @@ Route::get('signup', 'RouteController@signup');
 Route::get('program', 'RouteController@program');
 Route::get('contact', 'RouteController@contact');
 Route::get('store', 'RouteController@store');
-Route::get('singleprogram', 'RouteController@singleprogram');
+Route::get('singleprogram/{id}', 'RouteController@singleprogram');
 Route::get('singleclass', 'RouteController@singleclass');
 Route::get('viewItem/{id}', 'RouteController@viewItem');
 Route::get('viewGift', 'RouteController@viewGift');
