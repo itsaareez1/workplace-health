@@ -211,7 +211,7 @@ class RouteController extends Controller
       return view('web.admin.addCategory');
     }
     public function addcoupon(){
-      return view('web.admin.addcoupon');
+      return view('web.admin.addCoupon');
     }
     public function addVoucher(){
       return view('web.admin.addVoucher');

@@ -48,7 +48,7 @@
                 <br/><br/>
                 @endif
                 <div class="form-group">
-                  <label for="answer">Product Specifications</label>
+                  <label for="answer">Answer</label>
                   <div class="input-group input-group-icon iconfont icon-right">
                     <textarea class="form-control" name="answer" type="text" rows="12" placeholder="Write answer here!"></textarea>
                   </div>
