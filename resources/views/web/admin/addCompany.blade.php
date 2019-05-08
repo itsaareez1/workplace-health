@@ -1,7 +1,7 @@
-@include('web\admin\head')
+@include('web.admin.head')
 <body class="js-loading "> <!-- add for rounded corners: form-controls-rounded -->
-@include('web\admin\navbar')
-@include('web\admin\menu')
+@include('web.admin.navbar')
+@include('web.admin.menu')
 
 
   
@@ -78,7 +78,7 @@
 
 
 
-@include('web\admin\footerjs')
+@include('web.admin.footerjs')
 
 <script src="{{asset('admin/js/form-wizard/form-wizard.js')}}"></script>
 <script src="{{asset('admin/js/preview/form-wizard-a.min.js')}}"></script>
