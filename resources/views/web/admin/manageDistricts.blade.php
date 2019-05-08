@@ -1,10 +1,10 @@
-@include('web\admin\head')
+@include('web.admin.head')
 <body class="js-loading "> <!-- add for rounded corners: form-controls-rounded -->
 
 
 
-@include('web\admin\navbar')
-@include('web\admin\menu')
+@include('web.admin.navbar')
+@include('web.admin.menu')
   
 
   <div class="page-content">
@@ -82,7 +82,7 @@
 </div>
 
 
-@include('web\admin\footerjs')
+@include('web.admin.footerjs')
 
 
 

@@ -29,17 +29,6 @@
             <li class="sidebar-section-subnav__item"><a class="sidebar-section-subnav__link" href="{{ url('wh-manageVoucher') }}">Sent</a></li>
           </ul>
           </li>
-          <li class="sidebar-section-nav__item">
-          <a class="sidebar-section-nav__link sidebar-section-nav__link-dropdown" href="#">
-            <span class="sidebar-section-nav__item-icon ua-icon-home"></span>
-            <span class="sidebar-section-nav__item-text">News</span>
-          </a>
-          <ul class="sidebar-section-subnav">
-            <li class="sidebar-section-subnav__item"><a class="sidebar-section-subnav__link" href="{{ url('wh-addNews') }}">Add News</a></li>
-            <li class="sidebar-section-subnav__item"><a class="sidebar-section-subnav__link" href="{{ url('wh-manageNews') }}">Manage</a></li>
-          </ul>
-          </li>
-
         <li class="sidebar-section-nav__item">
           <a class="sidebar-section-nav__link sidebar-section-nav__link-dropdown" href="#">
             <span class="sidebar-section-nav__item-icon ua-icon-home"></span>
