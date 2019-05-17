@@ -60,13 +60,13 @@
         <div class="site-navbar bg-light">
           <div class="py-1">
             <div class="row align-items-center">
-              <div class="col-2">
-				<img style="width:100%" src="{{url('web/images/logo.png')}}">
+              <div class="col-1">
+				<img class="img-responsive" style="width:160px; max-width: 160px;" src="{{url('web/images/logo.png')}}">
 
 
 
               </div>
-              <div class="col-10">
+              <div class="col-11">
                 <nav class="site-navigation text-right" role="navigation">
                   <div class="container">
                     <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3"><a href="#" class="site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
@@ -85,7 +85,6 @@
                           <li><a href="{{url('editProfile')}}"><i class="fa fa-user"></i> Edit Profile</a></li>
                           <li><a href="{{url('myOrder')}}"><i class="fa fa-file"></i> My Order</a></li>
                           <li><a href="{{url('history')}}"><i class="fa fa-history"></i> History</a></li>
-<!--                       <li><a href="{{url('buyCredits')}}"><i class="fa fa-fw fa-credit-card"></i> Buy credits</a></li> -->
                           <li><a href="{{url('loyaltyPoints')}}"><i class="fa fa-hand-point-up"></i> Loyalty Points</a></li>
                           <li><a href="{{url('changepass')}}"><i class="fa fa-exchange-alt"></i> Change Password</a></li>
                           <li><a href="{{url('signout')}}"><i class="fa fa-sign-out-alt"></i> Sign Out</a></li>

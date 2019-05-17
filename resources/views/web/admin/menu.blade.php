@@ -79,7 +79,7 @@
             <span class="sidebar-section-nav__item-text">News</span>
           </a>
           <ul class="sidebar-section-subnav">
-            <li class="sidebar-section-subnav__item"><a class="sidebar-section-subnav__link" href="index.html">Add New</a></li>
+            <li class="sidebar-section-subnav__item"><a class="sidebar-section-subnav__link" href="{{ url('wh-addNews')}}">Add New</a></li>
             <li class="sidebar-section-subnav__item"><a class="sidebar-section-subnav__link" href="{{ url('wh-manageNews') }}">Manage</a></li>
           </ul>
           </li>

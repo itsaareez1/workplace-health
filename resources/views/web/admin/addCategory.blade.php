@@ -11,7 +11,7 @@
 <div class="container-fluid container-fh">
   <div id="form-wizard-a" class="main-container container-fh__content form-wizard-a">
     <div class="container-header">
-      <h2 class="container-heading">Add a new Product Category/h2>
+      <h2 class="container-heading">Add a new Product Category</h2>
     </div>
     <div class="form-wizard-a__body">
       <div class="form-wizard-a__content">

@@ -38,7 +38,7 @@
         <div class="nonloop-block-13 owl-carousel">
         @foreach ($news as $new)
           <div class="media-image">
-            <img  style="max-height: 230px;" src="{{asset('storage/'.$new->img.'')}}" alt="Image" class="img-fluid">
+            <img  style="max-height: 230px; min-height: 230px" src="{{asset('storage/'.$new->img.'')}}" alt="Image" class="img-fluid">
             <div class="media-image-body">
               <h2>{{ $new->title }}</h2>
               <p>{{str_limit($new->description, 30, '...')}}</p>
@@ -64,7 +64,7 @@
         <div class="nonloop-block-13 owl-carousel">
           @foreach ($classes as $class)
           <div class="media-image">
-            <img style="max-height: 240px;" src="{{asset('storage/'.$class->img.'')}}" alt="Image" class="img-fluid">
+            <img style="max-height: 230px; min-height: 230px" src="{{asset('storage/'.$class->img.'')}}" alt="Image" class="img-fluid">
             <div class="media-image-body">
               <h2>{{ $class->name }}</h2>
               <p>{{ str_limit($class->description, 100, '...')}}</p>

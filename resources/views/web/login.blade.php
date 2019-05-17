@@ -11,7 +11,6 @@
 
 			<form class="login100-form validate-form" method="POST" action="{{url('signin')}}">
 
-
 			{{ csrf_field() }}
 				<div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
 					<span class="label-input100">Username</span>
@@ -27,10 +26,10 @@
 
 				<div class="flex-sb-m w-full p-b-30">
 					<div class="contact100-form-checkbox">
-						<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember" value="remember">
+					<!--	<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember" value="remember">
 						<label class="label-checkbox100" for="ckb1">
 							Remember me
-						</label>
+						</label> -->
 					</div>
 
 					<div>

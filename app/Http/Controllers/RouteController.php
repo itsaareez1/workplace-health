@@ -41,7 +41,23 @@ class RouteController extends Controller
     {
       if ($request->session()->has('userst'))
       {
+        $products = DB::table('products')
+        ->select('products.*')
+        ->where('type','=','1')
+        ->orderBy(DB::raw('RAND()'))
+        ->take(9)
+        ->get();
+
+        $news = DB::table('news')
+        ->select('news.*')
+        ->where('type','=','specific')
+        ->orderBy(DB::raw('RAND()'))
+        ->take(9)
+        ->get();
+   
         return view('web.index', [
+          'products' => $products,
+          'news' => $news,
           'name' => cookie('name')
         ]);
       }

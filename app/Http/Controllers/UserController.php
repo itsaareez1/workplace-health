@@ -55,22 +55,7 @@ class UserController extends Controller
 
         if (!empty($results)){
             session(['userst' => 'logged', 'name' => $results->name, 'usr_id' => $results->id]);
-
-            if (isset($request->remember)){
-                if ($request->remember == "remember"){
-                    return view('web.index',compact([
-                        'name' => $results->name,
-                        'status' => "Logged in successfully."
-                    ]))->withCookie(cookie('login_status','logged', 60), cookie('name',$request->name, 525600));
-                }
-            }
-            else {
-                return view('web.index',compact([
-                    'name' => $results->name,
-                    'status' => "Logged in successfully."
-                ]))->withCookie(cookie('login_status','not_logged', 60), cookie('name',$request->name, 525600));
-        }    
-        
+            return redirect('index')->with('status','Logged in successfully.');        
         }
         else{
             return redirect('login')->with('status','Login failed! Username or password is wrong.');   
