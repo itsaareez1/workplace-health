@@ -42,8 +42,27 @@
                     <span class="input-icon ua-icon-home"></span>
                   </div>
                 </div>
+                @if ($errors->first('name'))
                 <span style="color: red">{{ $errors->first('name') }}</span>
                 <br/><br/>
+                @endif
+
+                <div class="form-group" id="company">
+                  <label for="type">Select Company</label>
+                  <div class="input-group input-group-icon iconfont icon-right">
+                    <select name="company">
+                        <option disabled selected>Select One</option>
+                        @foreach ($companies as $company)
+                          <option value="{{ $company->id }}">{{ $company->name }}</option>
+                        @endforeach
+                    </select>
+                  </div>
+                </div>
+                @if ($errors->first('company'))
+                <span style="color: red">{{ $errors->first('company') }}</span>
+                <br/><br/>
+                @endif
+
                 <div class="form-group">
                     <input type="submit" value="Add Now!" class="btn-primary btn">
                 </div>

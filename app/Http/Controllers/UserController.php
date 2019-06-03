@@ -11,20 +11,56 @@ class UserController extends Controller
 
     public function signup(Request $request){
 
-        $request->validate([
-            'fullname' => 'required|max:100',
-            'email' => 'required|max:191',
-            'company' => 'required|max:100',
-            'phone' => 'required|max:13',
-            'permit' => 'required|max:30',
-            'password' => 'required|min:6|required_with:password_confirmation|same:password_confirmation',
-            'password_confirmation' => 'min:6',
-            'terms' => 'accepted'
+            $request->validate([
+                'fullname' => 'required|max:100',
+                'email' => 'required|max:191',
+                'company' => 'required|max:100',
+                'phone' => 'required|max:13',
+                'permit' => 'required|max:30',
+                'password' => 'required|min:6|required_with:password_confirmation|same:password_confirmation',
+                'password_confirmation' => 'min:6',
+/*                'terms' => 'accepted' */
+            ]);    
 
-        ]);
+            if ($request->type == "2"){
+                $request->validate([
+                    'question1' => 'required',
+                    'question2' => 'required',
+                    'question3' => 'required',
+                    'question4' => 'required',
+                    'question5' => 'required',
+                    'question6' => 'required',
+                    'question7' => 'required',
+                    'question8' => 'required',
+                    'question9' => 'required'
+                ]);   
 
+                DB::table('users')->insert([
+                    'name' => $request->fullname,
+                    'email' => $request->email,
+                    'company' => $request->company,
+                    'phone' => $request->phone,
+                    'workpermit' => $request->permit,
+                    'password' => md5($request->password),
+                    'terms' => $request->terms,
+                    'q1' => $request->question1,
+                    'q2' => $request->question2,
+                    'q3' => $request->question3,
+                    'q4' => $request->question4,
+                    'q5' => $request->question5,
+                    'q6' => $request->question6,
+                    'q7' => $request->question7,
+                    'q8' => $request->question8,
+                    'q9' => $request->question9
+
+                ]);
         
+                return redirect('login')->with('status', 'Account created successfully. Login Now!');
 
+            }
+          
+        
+/*
         DB::table('users')->insert([
             'name' => $request->fullname,
             'email' => $request->email,
@@ -36,7 +72,16 @@ class UserController extends Controller
         ]);
 
         return redirect('login')->with('status', 'Account created successfully. Login Now!');
-
+*/
+        return view('web.terms',[
+            'name' => $request->fullname,
+            'email' => $request->email,
+            'company' => $request->company,
+            'phone' => $request->phone,
+            'workpermit' => $request->permit,
+            'password' => md5($request->password),
+            'terms' => $request->terms
+        ]);
     }
 
     public function login(Request $request){

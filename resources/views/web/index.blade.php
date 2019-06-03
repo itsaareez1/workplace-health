@@ -31,7 +31,7 @@
           <div class="container">
             <div class="row">
               <div class="col-md-12">
-                <h2 class="site-section-heading text-center">My Classes</h2>
+                <h2 class="site-section-heading text-center">Upcoming Events</h2>
               </div>
             </div>
             <div class="row">

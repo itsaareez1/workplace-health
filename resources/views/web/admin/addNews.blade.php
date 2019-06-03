@@ -60,6 +60,21 @@
                 <span style="color: red">{{ $errors->first('type') }}</span>
                 <br/><br/>
                 @endif
+                <div class="form-group" id="company" style="display:none;">
+                  <label for="type">Select Company</label>
+                  <div class="input-group input-group-icon iconfont icon-right">
+                    <select name="company">
+                        <option disabled selected>Select One</option>
+                        @foreach ($companies as $company)
+                          <option value="{{ $company->id }}">{{ $company->name }}</option>
+                        @endforeach
+                    </select>
+                  </div>
+                </div>
+                @if ($errors->first('company'))
+                <span style="color: red">{{ $errors->first('company') }}</span>
+                <br/><br/>
+                @endif
                 <div class="form-group">
                   <label for="image">Upload Header Image</label>
                   <div class="input-group input-group-icon iconfont icon-right">
@@ -99,6 +114,22 @@
 
 
 
+<script type="text/javascript">
+
+  window.onload = function(){
+    var cSelect = document.getElementById('type');
+    cSelect.onchange = function(){
+      if (cSelect.selectedIndex == 2){
+        document.getElementById('company').style = "block";
+      }
+      else{
+        document.getElementById('company').style = "none";
+
+      }
+    }
+  }
+
+</script>
 
 @include('web.admin.footerjs')
 
@@ -107,7 +138,6 @@
 
 <script src="asset('admin/vendor/alloy-editor/alloy-editor-all-min.js')}}"></script>
 <script src="asset('admin/js/preview/wysiwyg-alloy-editor.min.js')}}"></script>
-
 
 
 

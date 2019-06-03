@@ -38,7 +38,7 @@
                 <div class="form-group">
                   <label for="name">Class Name</label>
                   <div class="input-group input-group-icon iconfont icon-right">
-                    <input class="form-control" name="name" type="text" placeholder="Write name for product here!">
+                    <input class="form-control" name="name" type="text" placeholder="Write name for class here!">
                     <span class="input-icon ua-icon-home"></span>
                   </div>
                 </div>
@@ -116,9 +116,9 @@
                 @endif
 
                 <div class="form-group">
-                  <label for="description">Product Description</label>
+                  <label for="description">Class Description</label>
                   <div class="input-group input-group-icon iconfont icon-right">
-                    <textarea class="form-control" name="description" type="text" placeholder="Write short description for product here!"></textarea>
+                    <textarea class="form-control" name="description" type="text" placeholder="Write short description for class here!"></textarea>
                   </div>
                 </div>
                 @if ($errors->first('description'))

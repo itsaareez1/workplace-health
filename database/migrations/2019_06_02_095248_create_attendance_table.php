@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLoyaltyTable extends Migration
+class CreateAttendanceTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,14 @@ class CreateLoyaltyTable extends Migration
      */
     public function up()
     {
-        Schema::create('loyalty', function (Blueprint $table) {
+        Schema::create('attendance', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 100);
-            $table->string('points', 4);
             $table->integer('user_id');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->integer('class_id');
+            $table->foreign('class_id')->references('id')->on('classes');
+            $table->integer('loyalty_points')->nullable();
+            $table->string('status',2);
             $table->timestamps();
         });
     }
@@ -30,6 +32,6 @@ class CreateLoyaltyTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('loyalty');
+        Schema::dropIfExists('attendance');
     }
 }

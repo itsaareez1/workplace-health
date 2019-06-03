@@ -247,7 +247,8 @@ class RouteController extends Controller
       return view('web.admin.addFAQ');
     }
     public function addProgram(){
-      return view('web.admin.addProgram');
+      $companies = DB::table('companies')->get();
+      return view('web.admin.addProgram',['companies' => $companies]);
     }
     public function manageCompany(){
       $results = DB::table('companies')
@@ -293,6 +294,7 @@ class RouteController extends Controller
       return view('web.admin.manageFAQS', ['results' => $results]);
     }
     public function addNews(){
-      return view('web.admin.addNews');
+      $companies = DB::table('companies')->get(); 
+      return view('web.admin.addNews',['companies' => $companies]);
     }
 }

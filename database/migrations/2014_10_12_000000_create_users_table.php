@@ -26,6 +26,19 @@ class CreateUsersTable extends Migration
             $table->string('phone', 13);
             $table->boolean('phonestatus')->nullable();
             $table->boolean('emailstatus')->nullable();
+            $table->string('IC',50)->nullable();
+            $table->string('signature',100)->nullable();
+            $table->date('dat')->nullable();
+            $table->string('q1',1)->nullable();
+            $table->string('q2',1)->nullable();
+            $table->string('q3',1)->nullable();
+            $table->string('q4',1)->nullable();
+            $table->string('q5',1)->nullable();
+            $table->string('q6',1)->nullable();
+            $table->string('q7',1)->nullable();
+            $table->string('q8',1)->nullable();
+            $table->string('q9',1)->nullable();
+
 //            $table->rememberToken();
             $table->timestamps();
         });

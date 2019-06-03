@@ -102,14 +102,6 @@ class AdminController extends Controller
     public function addNews(Request $request){
         if ($request->session()->has('admin_id')){
 
-            $type = "";
-            if ($request->type == 2)
-            {
-                $type = "specific";
-            }
-            else{
-                $type = "general";
-            }
 
             $image = $request->file('image')->store('news', 'public');
 
@@ -120,16 +112,36 @@ class AdminController extends Controller
                 'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10008',
                 'description' => 'required|max:1500',
             ]);
+            
+            $type = "";
+            if ($request->type == 2)
+            {
+                $type = "specific";
 
-            DB::table('news')->insert([
-                'type' => $type,
-                'title' => $request->title,
-                'img' => $image,
-                'description' => $request->description,
-                'admin_id' => session('admin_id')
-            ]);
+                DB::table('news')->insert([
+                    'type' => $type,
+                    'title' => $request->title,
+                    'img' => $image,
+                    'company_id' => $request->company,
+                    'description' => $request->description,
+                    'admin_id' => session('admin_id')
+                ]);
+        
+            }
+            else{
+                $type = "general";
+                DB::table('news')->insert([
+                    'type' => $type,
+                    'title' => $request->title,
+                    'img' => $image,
+                    'description' => $request->description,
+                    'admin_id' => session('admin_id')
+                ]);
+
+            }
 
             return redirect('wh-addNews')->with('status', 'News added successfully.');
+
         }
         else{
 
@@ -324,10 +336,12 @@ class AdminController extends Controller
 
             $request->validate([
                 'name' => 'required|max:200',
+                'company' => 'required'
             ]);
 
             DB::table('programs')->insert([
                 'name' => $request->name,
+                'company_id' => $request->company,
                 'admin_id' => session('admin_id')
             ]);
     
