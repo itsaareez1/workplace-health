@@ -22,10 +22,10 @@ class CreateUsersTable extends Migration
             $table->string('workpermit',30);
             $table->string('password', 128);
             $table->string('img',50)->nullable();
-            $table->boolean('terms');
             $table->string('phone', 13);
             $table->boolean('phonestatus')->nullable();
             $table->boolean('emailstatus')->nullable();
+            $table->string('nam', 100)->nullable();
             $table->string('IC',50)->nullable();
             $table->string('signature',100)->nullable();
             $table->date('dat')->nullable();

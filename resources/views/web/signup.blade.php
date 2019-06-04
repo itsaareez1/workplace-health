@@ -7,8 +7,9 @@
 
 </div>
 
-<form class="login100-form validate-form" method="POST" action="{{url('register')}}">
+<form class="login100-form validate-form" method="post" action="{{url('register')}}">
 					{{ csrf_field() }}
+
 					<div class="wrap-input100 validate-input m-b-26" data-validate="Full Name is required">
 						<input class="input100" type="text" name="fullname" placeholder=" Full Name ">
 						<span class="focus-input100" style="color: red">{{ $errors->first('fullname') }}</span>
@@ -55,21 +56,10 @@
             <span class="focus-input100" style="color: red">{{ $errors->first('password_confirmation') }}</span>
           </div>
 
-					<div class="flex-sb-m w-full p-b-30">
-
-						<div class="container-login100-form-btn" legal>
-								
-								<input type="checkbox" name="terms" id="agree-term" class="agree-term" value="1" />
-								<label  style="font-size: 12px;  font-weight: 600; color: #555;">&nbsp; I agree all statements in <a style="color: blue;" href="{{ url('terms-of-service') }}" class="term-service">Terms of service</a>.</label>
-								<span class="focus-input100" style="color: red">{{ $errors->first('terms') }}</span>
-
-						</div>
-
-					</div>
-
+					
           <div class="container-login100-form-btn" >
 						<button class="login100-form-btn" align="center">
-							sign up
+							Proceed
 						</button>
 
 					</div>

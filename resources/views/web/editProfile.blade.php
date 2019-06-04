@@ -4,6 +4,7 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-t-85 p-b-20">
+
 				<form class="login100-form validate-form" method="POST" action="{{ url('upPro') }}">
 					<span class="login100-form-title p-b-70">
 						Welcome
@@ -13,6 +14,17 @@
 					</span>
 <br/><br/>
 
+@if (session()->has('status'))
+          <div class="row" style="color:green">
+          <div class="col-lg-12">
+          <div class="alert action-alert action-alert--danger has-btn" role="alert">
+              <span class="action-alert__message">
+              <span class="action-alert__action-message">{{ session()->get('status') }}</a>
+            </span>
+          </div>
+         </div>
+         </div>
+         @endif
 					<div class="wrap-input100 validate-input m-b-26">
 						<select name="gender" style="border: 0; color: #c5c8cc; padding: 10px 0" class="input100">
 						@if ($user->salutation != "Ms." && $user->salutation != "Mr.")
@@ -29,20 +41,20 @@
 						</select><br/>
 						<span class="focus-input100" style="color: red">{{ $errors->first('company') }}</span>
 					</div>
-					<div class="wrap-input100 validate-input m-b-50" data-validate = "Name">
+					<div class="wrap-input100 validate-input m-b-50" data-validate = "">
 						<input class="input100" type="text" name="name" value="{{ $user->name }}">
-						<span class="focus-input100" data-placeholder="Name"  dir="rtl" align="right"></span>
+						<span class="focus-input100" data-placeholder=""  dir="rtl" align="right"></span>
 					</div>
 
-					<div class="wrap-input100 validate-input m-b-50" data-validate="Mobile Number">
+					<div class="wrap-input100 validate-input m-b-50" data-validate="">
 						<input class="input100" type="text" name="phone" value="{{ $user->phone }}">
-						<span dir="rtl" align="right" class="focus-input100" data-placeholder="Mobile Number"></span>
-            <p dir="rtl" align="right" ><a href="{{url('verifyAccount1')}}" class="txt2">Verify Number</a></p>
+						<span dir="rtl" align="right" class="focus-input100" data-placeholder=""></span>
+            <p dir="rtl" align="right" ><a href="{{url('verifyAccount1')}}" class="txt2">Verify Phone Number</a></p>
 					</div>
 
-          <div class="wrap-input100 validate-input m-b-50" data-validate="Email Address">
+          <div class="wrap-input100 validate-input m-b-50" data-validate="">
 						<input class="input100" type="email" name="email" value="{{ $user->email }}"><a href="#" class="txt2">
-						<span class="focus-input100" data-placeholder="Email Address"  dir="rtl" align="right"></span>
+						<span class="focus-input100" data-placeholder=""  dir="rtl" align="right"></span>
           <p dir="rtl" align="right"><a href="{{url('verifyAccount2')}}" class="txt2"><p dir="rtl" align="right">Verify Email</a></p>
 					</div>
 

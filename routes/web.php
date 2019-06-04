@@ -68,8 +68,10 @@ Route::get('wh-managenews', 'RouteController@manageNews');
 
 Route::get('signout', 'UserController@signout');
 
-
+Route::get('register', 'UserController@sign');
 Route::post('register', 'UserController@signup');
+Route::post('terms', 'UserController@terms');
+
 Route::post('signin', 'UserController@login');
 Route::post('sendmessage', 'UserController@contactus');
 Route::post('upPro', 'UserController@editProfile');

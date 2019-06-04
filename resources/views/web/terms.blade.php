@@ -53,22 +53,37 @@ withdraw at any time and will inform the event organiser of my decision. The fit
 reserves the right to remove any participant deemed physically incapable of continuing with the
 activity to prevent him/her from causing greater harm and injury to himself/herself.
 </p><br/><br/>
+<form method="post" action="{{url('terms')}}">
+{{ csrf_field() }}
+<input type="hidden" name="fullname" value="{{ $name }}">
+<input type="hidden" name="email" value="{{ $email }}">
+<input type="hidden" name="company" value="{{ $company }}">
+<input type="hidden" name="phone" value="{{ $phone }}">
+<input type="hidden" name="permit" value="{{ $workpermit }}">
+<input type="hidden" name="password" value="{{ $password }}">
+
 <table style="width:60%;  border: 1px solid black; margin: 0 auto;">
   <tr style=" border: 1px solid black;">
     <th  style=" border: 1px solid black; width: 20%;  padding: 5px; ">Name:</th>
-    <td></td>
+    <td>
+    <input style="padding: 0 5px;" type="text" name="nam" required>
+    <span class="focus-input100" style="color: red">{{ $errors->first('nam') }}</span>
+    </td>
   </tr>
   <tr style=" border: 1px solid black;">
     <th style=" border: 1px solid black;  padding: 5px; ">IC:</th>
-    <td></td>
+    <td><input style="padding: 0 5px;" type="text" name="ic" required>
+    <span class="focus-input100" style="color: red">{{ $errors->first('ic') }}</span></td>
   </tr>
   <tr style=" border: 1px solid black;">
     <th  style=" border: 1px solid black;  padding: 5px; ">Signature:</th>
-    <td></td>
+    <td><input style="padding: 0 5px;" type="text" name="signature" required>
+    <span class="focus-input100" style="color: red">{{ $errors->first('signature') }}</span></td>
   </tr>
   <tr style=" border: 1px solid black;">
     <th  style=" border: 1px solid black;  padding: 5px; ">Date:</th>
-    <td></td>
+    <td><input style="padding: 0 5px;" type="date" name="dat" required>
+    <span class="focus-input100" style="color: red">{{ $errors->first('dat') }}</span></td>
   </tr>
 
 </table>
@@ -107,9 +122,9 @@ Please ask your doctor to complete the HPB Medical Advisory Form.<br/><br/>
     <th style=" border: 1px solid black; width: 90%;  padding: 5px; ">1. Has anyone in your immediate family (mother, father, sister or brother) had a heart attack or
 died suddenly of a heart related disorder before age 55 (men) or 65 (women)?<br/><br/>
 您的直系亲属中（爸爸、妈妈、姐姐、妹妹、哥哥或弟弟）是否有人在 55 岁（男性）或65（
-女性）之前，曾心脏病发作或死于与心脏失调病有关？</th>
-    <td  style=" border: 1px solid black;  padding: 5px;">Yes <br/><br/>是</td>
-    <td  style=" border: 1px solid black;  padding: 5px;">No <br/><br/>否</td>
+女性）之前，曾心脏病发作或死于与心脏失调病有关？<span class="focus-input100" style="color: red">{{ $errors->first('q1') }}</span></th>
+    <td  style=" border: 1px solid black;  padding: 5px;">Yes <br/><input type="radio" name="q1" value="1" required><br/>是</td>
+    <td  style=" border: 1px solid black;  padding: 5px;">No <br/><input type="radio" name="q1" value="0" required><br/>否</td>
     
   </tr>
   <tr style=" border: 1px solid black;">
@@ -125,8 +140,8 @@ Stroke<br/><br/>
 
 中风
 </th>
-    <td  style=" border: 1px solid black;  padding: 5px;">Yes <br/><br/>是</td>
-    <td  style=" border: 1px solid black;  padding: 5px;">No <br/><br/>否</td>
+    <td  style=" border: 1px solid black;  padding: 5px;">Yes <br/><input type="radio" name="q2"  value="1" required><br/>是</td>
+    <td  style=" border: 1px solid black;  padding: 5px;">No <br/><input type="radio" name="q2"  value="0" required><br/>否</td>
     
   </tr>
 
@@ -139,8 +154,8 @@ Stroke<br/><br/>
  肺病（例如慢性阻塞性肺病/COPD 或哮喘病）<br/>
  糖尿病
 </th>
-    <td  style=" border: 1px solid black;  padding: 5px;">Yes <br/><br/>是</td>
-    <td  style=" border: 1px solid black;  padding: 5px;">No <br/><br/>否</td>
+    <td  style=" border: 1px solid black;  padding: 5px;">Yes <br/><input type="radio" name="q3" value="1" required><br/>是</td>
+    <td  style=" border: 1px solid black;  padding: 5px;">No <br/><input type="radio" name="q3" value="0" required><br/>否</td>
     
   </tr>
 
@@ -151,8 +166,8 @@ Stroke<br/><br/>
 rest?<br/><br/>
 在过去1年里，您是否曾在进行体力活动时或没有进行任何活动时感到胸口疼痛？
 </th>
-    <td  style=" border: 1px solid black;  padding: 5px;">Yes <br/><br/>是</td>
-    <td  style=" border: 1px solid black;  padding: 5px;">No <br/><br/>否</td>
+    <td  style=" border: 1px solid black;  padding: 5px;">Yes <br/><input type="radio" name="q4" value="1" required><br/>是</td>
+    <td  style=" border: 1px solid black;  padding: 5px;">No <br/><input type="radio" name="q4" value="0" required><br/>否</td>
     
   </tr>
 
@@ -162,8 +177,8 @@ rest?<br/><br/>
     Do you ever experience dizziness or even lose consciousness?<br/>
 您是否曾感到晕眩或甚至失去知觉？
 </th>
-    <td  style=" border: 1px solid black;  padding: 5px;">Yes <br/><br/>是</td>
-    <td  style=" border: 1px solid black;  padding: 5px;">No <br/><br/>否</td>
+    <td  style=" border: 1px solid black;  padding: 5px;">Yes <br/><input type="radio" name="q5" value="1" required><br/>是</td>
+    <td  style=" border: 1px solid black;  padding: 5px;">No <br/><input type="radio" name="q5" value="0" required><br/>否</td>
     
   </tr>
 
@@ -174,8 +189,8 @@ rest?<br/><br/>
 could be made worse by participating in exercise?<br/><br/>
 您的骨骼、关节或肌肉（例如脊椎、膝盖、髋、肩膀或脚踝）是否有可能因参与运动而恶化？
 </th>
-    <td  style=" border: 1px solid black;  padding: 5px;">Yes <br/><br/>是</td>
-    <td  style=" border: 1px solid black;  padding: 5px;">No <br/><br/>否</td>
+    <td  style=" border: 1px solid black;  padding: 5px;">Yes <br/><input type="radio" name="q6" value="1" required><br/>是</td>
+    <td  style=" border: 1px solid black;  padding: 5px;">No <br/><input type="radio" name="q6" value="0" required><br/>否</td>
     
   </tr>
   <tr style=" border: 1px solid black;">
@@ -184,8 +199,8 @@ could be made worse by participating in exercise?<br/><br/>
 high blood pressure, or you do not follow up with a doctor on a regular basis?<br/><br/>
 您是否正在服用治疗高血压的药物，同时高血压情况控制不佳，或没有定期和医生跟进？
 </th>
-    <td  style=" border: 1px solid black;  padding: 5px;">Yes <br/><br/>是</td>
-    <td  style=" border: 1px solid black;  padding: 5px;">No <br/><br/>否</td>
+    <td  style=" border: 1px solid black;  padding: 5px;">Yes <br/><input type="radio" name="q7" value="1" required><br/>是</td>
+    <td  style=" border: 1px solid black;  padding: 5px;">No <br/><input type="radio" name="q7" value="0" required><br/>否</td>
     
   </tr>
   <tr style=" border: 1px solid black;">
@@ -195,8 +210,8 @@ programme is not designed for pregnancy.)<br/><br/>
 您目前是否怀孕？（女性参加者请注意: 如果您目前已怀孕，请与您的医生商讨一个适合您的
 运动计划，此运动计划的设计不适合怀孕者。）
 </th>
-    <td  style=" border: 1px solid black;  padding: 5px;">Yes <br/><br/>是</td>
-    <td  style=" border: 1px solid black;  padding: 5px;">No <br/><br/>否</td>
+    <td  style=" border: 1px solid black;  padding: 5px;">Yes <br/><input type="radio" name="q8" value="1" required><br/>是</td>
+    <td  style=" border: 1px solid black;  padding: 5px;">No <br/><input type="radio" name="q8" value="0" required><br/>否</td>
     
   </tr>
 
@@ -205,11 +220,25 @@ programme is not designed for pregnancy.)<br/><br/>
 physical activity might be harmful to your health?<br/><br/>
 是否有任何原因会令参与此 保健促进局运动计划或任何其它体力活动可能对您的健康造成危害？
 </th>
-    <td  style=" border: 1px solid black;  padding: 5px;">Yes <br/><br/>是</td>
-    <td  style=" border: 1px solid black;  padding: 5px;">No <br/><br/>否</td>
+    <td  style=" border: 1px solid black;  padding: 5px;">Yes <br/><input type="radio" name="q9" value="1" required><br/>是</td>
+    <td  style=" border: 1px solid black;  padding: 5px;">No <br/><input type="radio" name="q9" value="0" required><br/>否</td>
     
   </tr>
 </table>
+<div class="row" style="margin-top: 25px;">
+<div class="col-lg-4"></div>
+<div class="col-lg-4">
+<div class="container-login100-form-btn">
+            <input style="text-align: center;" class="login100-form-btn" type="submit" value="Sign up">
+
+					</div>
+
+</div>
+<div class="col-lg-4"></div>
+
+</div>
+
+</form>
     </div>
 
 
