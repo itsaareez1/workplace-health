@@ -116,18 +116,16 @@
 
 <script type="text/javascript">
 
-  window.onload = function(){
     var cSelect = document.getElementById('type');
     cSelect.onchange = function(){
-      if (cSelect.selectedIndex == 2){
-        document.getElementById('company').style = "block";
+      if (cSelect.options[cSelect.selectedIndex].value == "1"){
+        document.getElementById('company').style.display = "none";
       }
       else{
-        document.getElementById('company').style = "none";
-
+        document.getElementById('company').style.display = "block";
       }
     }
-  }
+  
 
 </script>
 

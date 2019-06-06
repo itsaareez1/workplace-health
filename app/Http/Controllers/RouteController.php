@@ -49,8 +49,10 @@ class RouteController extends Controller
         ->get();
 
         $news = DB::table('news')
+        ->join('companies','companies.id','=','news.company_id')
+        ->join('users','users.company_id','companies.ids')
         ->select('news.*')
-        ->where('type','=','specific')
+        ->where('news.type','=','specific')
         ->orderBy(DB::raw('RAND()'))
         ->take(9)
         ->get();

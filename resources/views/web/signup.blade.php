@@ -21,10 +21,10 @@
           </div>
 
 					<div class="wrap-input100 validate-input m-b-26">
-						<select name="company" style="border: 0; color: #c5c8cc; padding: 10px 0" class="input100">
+						<select name="company_id" style="border: 0; color: #c5c8cc; padding: 10px 0" class="input100">
 						<option disabled selected>Company Name</option>
 						@foreach ($companies as $company)
-							<option value = {{ $company->name }}>{{ $company->name }}</option>
+							<option value = "{{ $company->id }}">{{ $company->name }}</option>
 						@endforeach
 						</select>
 						<span class="focus-input100" style="color: red">{{ $errors->first('company') }}</span>

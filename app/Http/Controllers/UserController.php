@@ -14,7 +14,7 @@ class UserController extends Controller
                 $request->validate([
                     'fullname' => 'required|max:100',
                     'email' => 'required|max:191',
-                    'company' => 'required|max:100',
+                    'company_id' => 'required|max:100',
                     'phone' => 'required|min:8,max:13',
                     'permit' => 'required|max:30',
                     'password' => 'required|min:6|required_with:password_confirmation|same:password_confirmation',
@@ -26,7 +26,7 @@ class UserController extends Controller
                 return view('web.terms',[
                     'name' => $request->fullname,
                     'email' => $request->email,
-                    'company' => $request->company,
+                    'company_id' => $request->company_id,
                     'phone' => $request->phone,
                     'workpermit' => $request->permit,
                     'password' => md5($request->password),
@@ -53,7 +53,7 @@ class UserController extends Controller
         return view('web.terms',[
             'name' => $request->fullname,
             'email' => $request->email,
-            'company' => $request->company,
+            'company_id' => $request->company_id,
             'phone' => $request->phone,
             'workpermit' => $request->permit,
             'password' => md5($request->password),
@@ -80,7 +80,7 @@ class UserController extends Controller
         DB::table('users')->insert([
             'name' => $request->fullname,
             'email' => $request->email,
-            'company' => $request->company,
+            'company_id' => $request->company_id,
             'phone' => $request->phone,
             'workpermit' => $request->permit,
             'password' => $request->password,

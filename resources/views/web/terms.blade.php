@@ -57,7 +57,7 @@ activity to prevent him/her from causing greater harm and injury to himself/hers
 {{ csrf_field() }}
 <input type="hidden" name="fullname" value="{{ $name }}">
 <input type="hidden" name="email" value="{{ $email }}">
-<input type="hidden" name="company" value="{{ $company }}">
+<input type="hidden" name="company_id" value="{{ $company_id }}">
 <input type="hidden" name="phone" value="{{ $phone }}">
 <input type="hidden" name="permit" value="{{ $workpermit }}">
 <input type="hidden" name="password" value="{{ $password }}">

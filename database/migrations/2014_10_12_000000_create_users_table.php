@@ -18,7 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('salutation', 4)->nullable();
             $table->string('name', 100);
             $table->string('email')->unique();
-            $table->string('company', 100);
+            $table->integer('company_id');
+            $table->foreign('company_id')->references('id')->on('companies');
             $table->string('workpermit',30);
             $table->string('password', 128);
             $table->string('img',50)->nullable();
