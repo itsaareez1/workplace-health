@@ -58,10 +58,15 @@ class RouteController extends Controller
         ->get();
 
         
-        $programs = DB::table('programs')
+        /* $programs = DB::table('programs')
                   ->join('companies','companies.id','=','programs.company_id')
                   ->select('programs.name','programs.id')
-                  ->where('programs.company_id','=', $user->company_id)->get();
+                  ->where('programs.company_id','=', $user->company_id)->get(); */
+
+        $programs = DB::table('programs')
+                  ->join('classes','programs.id','=','classes.program_id')
+                  ->select('classes.*')->get();
+
 
         return view('web.index', [
           'products' => $products,
@@ -98,11 +103,16 @@ class RouteController extends Controller
 
     public function program()
     {
+     /* $programs = DB::table('programs')->get(); */
+       $programs = DB::table('programs')
+      ->join('classes','programs.id','=','classes.program_id')
+      ->select('programs.name','programs.id')->distinct()->get();
+
       $classes = DB::table('programs')
                   ->join('classes','programs.id','=','classes.program_id')
                   ->select('programs.name','classes.*')->get();
 
-         return view('web.program',['classes' => $classes]);
+         return view('web.program',['programs' => $programs, 'classes' => $classes]);
     }
 
     public function store()
@@ -135,7 +145,7 @@ class RouteController extends Controller
       $product = DB::table('products')
                  ->where('id','=',$request->id)->first();
 
-      return view('web.viewItem', ['product' => $product]);
+      return view('web.viewItem', ['product' => $product, 'id' => $request->id]);
 
     }
     public function viewGift()
@@ -306,4 +316,8 @@ class RouteController extends Controller
       $companies = DB::table('companies')->get(); 
       return view('web.admin.addNews',['companies' => $companies]);
     }
+   public function inbox(){
+     $messages = DB::table('contactus')->orderBy('id','asc')->paginate(10);
+     return view('web.admin.manageInbox', ['results' => $messages]);
+   } 
 }

@@ -25,8 +25,7 @@
             <span class="sidebar-section-nav__item-text">Messages</span>
           </a>
           <ul class="sidebar-section-subnav">
-            <li class="sidebar-section-subnav__item"><a class="sidebar-section-subnav__link" href="{{ url('wh-voucher')}}">Inbox</a></li>
-            <li class="sidebar-section-subnav__item"><a class="sidebar-section-subnav__link" href="{{ url('wh-manageVoucher') }}">Sent</a></li>
+            <li class="sidebar-section-subnav__item"><a class="sidebar-section-subnav__link" href="{{ url('wh-inbox')}}">Inbox</a></li>
           </ul>
           </li>
         <li class="sidebar-section-nav__item">

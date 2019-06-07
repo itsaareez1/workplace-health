@@ -237,5 +237,68 @@ class UserController extends Controller
             return redirect('login');
         }
     }
+    public function addToCart(Request $request){
+
+        if ($request->session()->has('usr_id')){
+
+            $quantity = 1;
+            if (!empty($request->quantity)){
+
+                $quantity = $request->quantity;
+            }
+            $orderID = "";
+            $check = DB::table('orders')
+                        ->where('user_id','=',$request->session()->get('usr_id'))
+                        ->where('status','=','started')->first();
+
+            if (!empty($check)){
+                $orderID = $check->id;
+            }
+            else{
+
+              $orderID =  DB::table('orders')->insertGetId([
+                           'user_id' => $request->session()->get('usr_id'),
+                           'type' => 'product',
+                           'status' => 'started'
+                          ]);
+              }
+
+             $proC = DB::table('carts')
+                        ->where('order_id','=',$orderID)
+                        ->where('product_id','=',$request->product_id)->first();
+
+            if (!empty($proC)){
+                if (!empty($request->quantity)){
+                    DB::table('carts')->update([
+                        'quantity' => $proC->quantity + $quantity
+                    ]);    
+                }
+                else{
+                    DB::table('carts')->update([
+                        'quantity' => $proC->quantity + 1
+                    ]);
+    
+                }
+            }
+            else{
+                DB::table('carts')->insert([
+                    'order_id' => $orderID,
+                    'product_id' => $request->product_id,
+                    'quantity' => $quantity
+                ]);
+  
+  
+            }
+
+
+              return redirect()->back()->with('status','Added to cart successfully.');
+    
+        }
+        else {
+            return redirect('login');
+        }
+    }
+
+    
 }
  

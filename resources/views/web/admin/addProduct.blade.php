@@ -95,7 +95,7 @@
                 <div class="form-group" id="priceBox">
                   <label for="price">Price</label>
                   <div class="input-group input-group-icon iconfont icon-right">
-                    <input class="form-control" name="price" type="text" placeholder="Write price for product here!">
+                    <input class="form-control" name="price" type="number" placeholder="Write price for product here!">
                   </div>
                 </div>
                 @if ($errors->first('price'))

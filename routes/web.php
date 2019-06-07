@@ -65,6 +65,7 @@ Route::get('wh-manageCoupon', 'RouteController@manageCoupons');
 Route::get('wh-manageVouchers', 'RouteController@manageVouchers');
 Route::get('wh-managefaqs', 'RouteController@manageFAQs');
 Route::get('wh-managenews', 'RouteController@manageNews');
+Route::get('wh-inbox', 'RouteController@inbox');
 
 
 Route::get('signout', 'UserController@signout');
@@ -87,8 +88,7 @@ Route::post('postClass', 'AdminController@createClass');
 Route::post('postFAQ', 'AdminController@postFAQ');
 Route::post('postProgram', 'AdminController@postProgram');
 Route::post('postNews', 'AdminController@addNews');
-
 Route::post('changepass', 'UserController@changePass');
-
+Route::post('add-to-cart','UserController@addToCart');
 
 

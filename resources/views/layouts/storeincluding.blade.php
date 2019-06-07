@@ -11,7 +11,7 @@
 
           <div class="col-md-4 text-center mb-4">
             <div class="border p-4 text-with-icon">
-              <img style="max-height: 200px" src="{{asset('storage/'.$product->img.'')}}" alt="Image" class="img-fluid">
+              <img style="max-height: 200px; min-height:200px"  src="{{asset('storage/'.$product->img.'')}}" alt="Image" class="img-fluid">
               <hr>
               <h2 class="h5">{{ $product->name }}</h2>
               <p>{{ str_limit($product->description, 50, '...') }}</p>

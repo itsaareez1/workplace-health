@@ -42,8 +42,8 @@
                     <img src="web/images/img_1.jpg" alt="Image" class="img-fluid">
                     <div class="media-image-body">
                       <h2>{{ $program->name }}</h2>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, voluptate.</p>
-                      <p><a href="{{url('singleprogram')}}" class="btn btn-primary text-white px-4"><span class="caption">View Details</span></a></p>
+                      <p>{{ $program->description }}</p><br/>
+                      <p><a href="{{url('singleprogram').'/'.$program->id}}" class="btn btn-primary text-white px-4"><span class="caption">View Details</span></a></p>
                     </div>
                   </div>
                   @endforeach
