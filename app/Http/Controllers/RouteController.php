@@ -47,19 +47,26 @@ class RouteController extends Controller
         ->orderBy(DB::raw('RAND()'))
         ->take(9)
         ->get();
-
+   
+        $user = DB::table('users')->where('id','=',$request->session()->get('usr_id'))->first();
+   
         $news = DB::table('news')
-        ->join('companies','companies.id','=','news.company_id')
-        ->join('users','users.company_id','companies.ids')
-        ->select('news.*')
         ->where('news.type','=','specific')
+        ->where('news.company_id','=',$user->company_id)
         ->orderBy(DB::raw('RAND()'))
         ->take(9)
         ->get();
-   
+
+        
+        $programs = DB::table('programs')
+                  ->join('companies','companies.id','=','programs.company_id')
+                  ->select('programs.name','programs.id')
+                  ->where('programs.company_id','=', $user->company_id)->get();
+
         return view('web.index', [
           'products' => $products,
           'news' => $news,
+          'programs' => $programs,
           'name' => cookie('name')
         ]);
       }
@@ -95,7 +102,7 @@ class RouteController extends Controller
                   ->join('classes','programs.id','=','classes.program_id')
                   ->select('programs.name','classes.*')->get();
 
-         return view('web.program',['results' => $results]);
+         return view('web.program',['classes' => $classes]);
     }
 
     public function store()
