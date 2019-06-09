@@ -5,7 +5,7 @@
 <div class="site-section">
   <div class="container">
     <div class="column">
-      <strong><h2 align="center">Cart</h2></strong>  
+      <strong><h2 align="center">Place Order</h2></strong>  
     </div>
     <div style="padding: 20px 20px; text-align:justify;" class="row">
 
@@ -16,26 +16,20 @@
         <span class="badge badge-secondary badge-pill">3</span>
       </h4>
       <ul class="list-group mb-3">
+      @foreach($products as $product)
         <li class="list-group-item d-flex justify-content-between lh-condensed">
           <div>
-            <h6 class="my-0">Product name</h6>
-            <small class="text-muted">Brief description</small>
+            <h6 class="my-0">{{ $product->name }}</h6>
+            <small class="text-muted">{{str_limit($product->description, 45, '...')}}</small>
           </div>
-          <span class="text-muted">$12</span>
+          <span class="text-muted">${{ $product->price }}</span>
         </li>
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <div>
-            <h6 class="my-0">Second product</h6>
-            <small class="text-muted">Brief description</small>
+      @endforeach
+      <li class="list-group-item d-flex justify-content-between bg-light">
+          <div class="text-danger">
+            <h6 class="my-0">Sub Total</h6>
           </div>
-          <span class="text-muted">$8</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <div>
-            <h6 class="my-0">Third item</h6>
-            <small class="text-muted">Brief description</small>
-          </div>
-          <span class="text-muted">$5</span>
+          <span class="text-danger">${{ $subtotal }}</span>
         </li>
         <li class="list-group-item d-flex justify-content-between bg-light">
           <div class="text-success">

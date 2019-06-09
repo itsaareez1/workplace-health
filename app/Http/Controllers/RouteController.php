@@ -320,14 +320,43 @@ class RouteController extends Controller
      $messages = DB::table('contactus')->orderBy('id','asc')->paginate(10);
      return view('web.admin.manageInbox', ['results' => $messages]);
    } 
+   public function checkCoupon(Request $request){
+     $check = DB::table('coupons')->where('code','=',$request->code)->first();
+
+     if(!empty($check)){
+        DB::table('orders')
+        ->where('user_id','=',$session('usr_id'))
+        ->where('status','=','started')->update(['discount' => $check->price]);
+        return redirect('cart/'.$request->code)->with('status','Coupon added successfully.');
+
+      }
+      return redirect('cart/'.$request->code)->with('status','Coupon doesn\'t exist.');
+     
+   }
    public function cart(){
       $products = DB::table('orders')
                     ->join('carts','orders.id','=','carts.order_id')
                     ->join('products','products.id','=','carts.product_id')
                     ->where('orders.user_id','=',session('usr_id'))->get();
 
+
+      $subtotal = 0;
+      foreach ($products as $product){
+         $subtotal += $product->price;
+
+      }
+
+      if (!empty($coupon)){
+        return view('web.cart',[
+          'products' => $products,
+          'subtotal' => $subtotal,
+          'coupon' => $coupon
+        ]);
+          
+      }
       return view('web.cart',[
-        'products' => $products
+        'products' => $products,
+        'subtotal' => $subtotal
       ]);
    }
 }

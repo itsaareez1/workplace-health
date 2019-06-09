@@ -18,6 +18,7 @@ class CreateTableOrders extends Migration
             $table->string('type',20);
             $table->integer('sub_total')->nullable();
             $table->integer('shipping_charges')->nullable();
+            $table->integer('discount')->nullable();
             $table->integer('total')->nullable();
             $table->integer('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');

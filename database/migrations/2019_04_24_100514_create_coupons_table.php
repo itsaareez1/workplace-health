@@ -16,7 +16,8 @@ class CreateCouponsTable extends Migration
         Schema::create('coupons', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title', 50);
-            $table->string('code', 10);
+            $table->string('code', 10)->unique();
+            $table->integer('price');
             $table->integer('state');
             $table->integer('admin_id');
             $table->foreign('admin_id')->references('id')->on('admins');
