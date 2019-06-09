@@ -35,7 +35,11 @@
         <li class="list-group-item d-flex justify-content-between bg-light">
           <div class="text-success">
             <h6 class="my-0">Promo code</h6>
+            @if (!empty($coup))
             <small>{{$coup->code}}</small>
+            @else
+            <small>XXXX</small>
+            @endif
           </div>
           <span class="text-success">-${{$order->discount}}</span>
         </li>
@@ -61,8 +65,12 @@
         <div class="input-group">
         {{csrf_field()}}
 
-        @if (session()->get('status') == "verified" || !empty($order->discount))
+        @if (session()->get('status') == "verified" || !empty($order->discount ))
+        @if(!empty($coup))
           <input type="text" value="{{$coup->code}}" name="code" class="form-control" disabled>
+        @else
+        <input type="text" value="XXXXXX" name="code" class="form-control" disabled>
+        @endif
           <div class="input-group-append">
             <button type="submit" class="btn btn-secondary" disabled>Redeem</button>
           </div>
