@@ -321,42 +321,68 @@ class RouteController extends Controller
      return view('web.admin.manageInbox', ['results' => $messages]);
    } 
    public function checkCoupon(Request $request){
-     $check = DB::table('coupons')->where('code','=',$request->code)->first();
+     $check = DB::table('coupons')->where('code','=',$request->code)->where('state','=',1)->first();
 
      if(!empty($check)){
         DB::table('orders')
-        ->where('user_id','=',$session('usr_id'))
+        ->where('user_id','=',session('usr_id'))
         ->where('status','=','started')->update(['discount' => $check->price]);
-        return redirect('cart/'.$request->code)->with('status','Coupon added successfully.');
+        return redirect('cart/'.$check->id)->with('status','verified');
 
       }
-      return redirect('cart/'.$request->code)->with('status','Coupon doesn\'t exist.');
+      return redirect('cart')->with('status','unverified');
      
    }
-   public function cart(){
+   public function cart(Request $request){
       $products = DB::table('orders')
                     ->join('carts','orders.id','=','carts.order_id')
                     ->join('products','products.id','=','carts.product_id')
                     ->where('orders.user_id','=',session('usr_id'))->get();
 
-
+      $order = DB::table('orders')->where('user_id','=',session('usr_id'))->where('status','=','started')->first();
       $subtotal = 0;
       foreach ($products as $product){
          $subtotal += $product->price;
-
+      }
+      $total = $subtotal;
+      if (!empty($order->discount)){
+          if ($order->discount > $total){
+            $total = 0;
+          }
+          else{
+            $total = $total - $order->discount;
+          }
       }
 
-      if (!empty($coupon)){
+      $shipping = 5;
+
+      if ($total >= 120){
+        $shipping = 0;
+      }
+
+      $total = $total + $shipping;
+      
+      if (!empty($request->id)){
+
+        $coup = DB::table('coupons')->where('id','=',$request->id)->first();
+
+
         return view('web.cart',[
           'products' => $products,
           'subtotal' => $subtotal,
-          'coupon' => $coupon
+          'total' => $total,
+          'coup' => $coup,
+          'order' => $order,
+          'shipping' => $shipping
         ]);
           
       }
       return view('web.cart',[
         'products' => $products,
-        'subtotal' => $subtotal
+        'subtotal' => $subtotal,
+        'total' => $total,
+        'order' => $order,
+        'shipping' => $shipping
       ]);
    }
 }

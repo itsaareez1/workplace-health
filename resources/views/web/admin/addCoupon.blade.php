@@ -58,6 +58,17 @@
                 <br/><br/>
                 @endif
                 <div class="form-group">
+                  <label for="code">Coupon Worth ($)</label>
+                  <div class="input-group input-group-icon iconfont icon-right">
+                    <input class="form-control" name="price" type="text" placeholder="Value of coupon">
+                    <span class="input-icon ua-icon-lock-outline"></span>
+                  </div>
+                </div>
+                @if ($errors->first('price'))
+                <span style="color: red">{{ $errors->first('price') }}</span>
+                <br/><br/>
+                @endif
+                <div class="form-group">
                   <label for="state">Select State</label>
                   <div class="input-group input-group-icon iconfont icon-right">
                     <select id="state" name="state">

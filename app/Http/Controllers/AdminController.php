@@ -37,12 +37,14 @@ class AdminController extends Controller
             $request->validate([
                 'title' => 'required|max:50',
                 'code' => 'required|max:10',
-                'state' => 'required'
+                'state' => 'required',
+                'price' => 'required'
             ]);
             
             DB::table('coupons')->insert([
                 'title' => $request->title,
                 'code' => $request->code,
+                'price' => $request->price,
                 'state' => $request->state,
                 'admin_id' => session('admin_id') 
             ]);

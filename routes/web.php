@@ -41,6 +41,7 @@ Route::get('forgetpassword', 'RouteController@forgetpassword');
 Route::get('gift-store', 'RouteController@gifts');
 Route::get('terms-of-service', 'RouteController@terms');
 Route::get('single-news/{id}', 'RouteController@terms');
+Route::get('cart/{id}','RouteController@cart');
 Route::get('cart','RouteController@cart');
 
 Route::get('wh-admin', 'RouteController@adminLogin');
@@ -73,6 +74,7 @@ Route::get('signout', 'UserController@signout');
 Route::get('register', 'UserController@sign');
 Route::post('register', 'UserController@signup');
 Route::post('terms', 'UserController@terms');
+Route::post('checkCoupon', 'RouteController@checkCoupon');
 
 Route::post('signin', 'UserController@login');
 Route::post('sendmessage', 'UserController@contactus');

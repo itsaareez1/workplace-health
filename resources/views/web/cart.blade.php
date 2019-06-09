@@ -31,25 +31,49 @@
           </div>
           <span class="text-danger">${{ $subtotal }}</span>
         </li>
+        @if (!empty($order->discount))
         <li class="list-group-item d-flex justify-content-between bg-light">
           <div class="text-success">
             <h6 class="my-0">Promo code</h6>
-            <small>EXAMPLECODE</small>
+            <small>{{$coup->code}}</small>
           </div>
-          <span class="text-success">-$5</span>
+          <span class="text-success">-${{$order->discount}}</span>
         </li>
-        <li class="list-group-item d-flex justify-content-between">
+        @endif
+        <li class="list-group-item d-flex justify-content-between bg-light">
+          <div class="text-primary">
+            <h6 class="my-0">Shipping Charges</h6>
+          </div>
+          <span class="text-primary">+${{$shipping}}</span>
+        </li>
+       <li class="list-group-item d-flex justify-content-between">
           <span>Total (USD)</span>
-          <strong>$20</strong>
+          <strong>${{$total}}</strong>
         </li>
       </ul>
 
-      <form class="card p-2">
+      <form class="card p-2" method="post" action="{{ url('checkCoupon') }}">
+      @if (session()->get('status') == "verified")
+        <div class="alert alert-success">Coupon code verified.</div>
+      @elseif (session()->get('status') == "unverified")
+        <div class="alert alert-danger">Coupon code doesn't exist.</div>
+      @endif
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="Promo code">
+        {{csrf_field()}}
+
+        @if (session()->get('status') == "verified" || !empty($order->discount))
+          <input type="text" value="{{$coup->code}}" name="code" class="form-control" disabled>
+          <div class="input-group-append">
+            <button type="submit" class="btn btn-secondary" disabled>Redeem</button>
+          </div>
+        @else
+
+          <input type="text" name="code" class="form-control" placeholder="Promo code">
           <div class="input-group-append">
             <button type="submit" class="btn btn-secondary">Redeem</button>
           </div>
+        @endif
+          
         </div>
       </form>
     </div>
