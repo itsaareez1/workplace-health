@@ -34,7 +34,7 @@
          <form method="post" action="{{ url('add-to-cart') }}">
          {{csrf_field()}}
           <input type="hidden" name="product_id" value="{{ $id }}">
-         <input style="width:50px; height: 50px; border-radius: 5px; text-align:center;" name="quantity" type="number">
+         <input style="width:50px; height: 50px; border-radius: 5px; text-align:center;" placeholder="1" name="quantity" type="number">
          <input type="submit" class="btn btn-info btn-lg" value="Add to Cart">
         </form>
        <hr>

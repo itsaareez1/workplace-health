@@ -320,4 +320,14 @@ class RouteController extends Controller
      $messages = DB::table('contactus')->orderBy('id','asc')->paginate(10);
      return view('web.admin.manageInbox', ['results' => $messages]);
    } 
+   public function cart(){
+      $products = DB::table('orders')
+                    ->join('carts','orders.id','=','carts.order_id')
+                    ->join('products','products.id','=','carts.product_id')
+                    ->where('orders.user_id','=',session('usr_id'))->get();
+
+      return view('web.cart',[
+        'products' => $products
+      ]);
+   }
 }

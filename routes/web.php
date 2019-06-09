@@ -41,7 +41,7 @@ Route::get('forgetpassword', 'RouteController@forgetpassword');
 Route::get('gift-store', 'RouteController@gifts');
 Route::get('terms-of-service', 'RouteController@terms');
 Route::get('single-news/{id}', 'RouteController@terms');
-
+Route::get('cart','RouteController@cart');
 
 Route::get('wh-admin', 'RouteController@adminLogin');
 Route::get('wh-dashboard', 'RouteController@adminDashboard');
