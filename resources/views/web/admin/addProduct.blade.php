@@ -22,7 +22,7 @@
           @if (session()->has('status'))
           <div class="row">
           <div class="col-lg-12">
-          <div class="alert action-alert action-alert--danger has-btn" role="alert">
+          <div class="alert action-alert action-alert--success has-btn" role="alert">
               <span class="action-alert__message">
               <span class="action-alert__action-message">{{ session()->get('status') }}</a>
             </span>

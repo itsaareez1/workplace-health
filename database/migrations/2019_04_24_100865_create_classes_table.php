@@ -30,7 +30,9 @@ class CreateClassesTable extends Migration
             $table->foreign('category_id')->references('id')->on('categories');
             $table->integer('program_id');
             $table->foreign('program_id')->references('id')->on('programs');
-            $table->timestamps();
+            $table->integer('is_delete')->default(0);
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });
     }
 

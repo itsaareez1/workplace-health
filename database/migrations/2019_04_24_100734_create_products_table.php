@@ -25,8 +25,9 @@ class CreateProductsTable extends Migration
             $table->string('points', 3)->nullable();
             $table->integer('admin_id')->nullable();
             $table->foreign('admin_id')->references('id')->on('admins');
-            
-            $table->timestamps();
+            $table->integer('status')->default(0);
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });
     }
 

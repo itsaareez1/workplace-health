@@ -18,7 +18,10 @@ class CreateCompaniesTable extends Migration
             $table->string('name', 100);
             $table->integer('district_id');
             $table->foreign('district_id')->references('id')->on('districts');
-            $table->timestamps();
+            $table->integer('status')->default(0);
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
+//            $table->timestamps();
         });
     }
 

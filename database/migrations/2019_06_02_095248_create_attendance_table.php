@@ -21,7 +21,8 @@ class CreateAttendanceTable extends Migration
             $table->foreign('class_id')->references('id')->on('classes');
             $table->integer('loyalty_points')->nullable();
             $table->string('status',2);
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });
     }
 

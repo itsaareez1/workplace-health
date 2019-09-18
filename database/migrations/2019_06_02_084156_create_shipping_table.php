@@ -18,7 +18,8 @@ class CreateShippingTable extends Migration
             $table->string('name',100);
             $table->string('address',300);
             $table->string('contact',15);
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });
     }
 
